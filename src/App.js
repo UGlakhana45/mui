@@ -1,11 +1,8 @@
-import React from 'react';
+import React from "react";
+import Routing from "./routes/routes";
 
 const App = () => {
-  return (
-    <div>
-        <h1>Hello World</h1>
-    </div>
-  );
-}
+  return <Routing />;
+};
 
 export default App;
