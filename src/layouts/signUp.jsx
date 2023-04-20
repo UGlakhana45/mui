@@ -50,7 +50,6 @@ export default function SignUp() {
     };
     setUsers([...users, user]);
     console.log(users);
-    
   };
 
   return (
