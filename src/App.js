@@ -1,8 +1,14 @@
-import React from "react";
+import React, { createContext } from "react";
 import Routing from "./routes/routes";
 
+export const UserContext = createContext();
 const App = () => {
-  return <Routing />;
+  const [users, setUsers] = React.useState([]);
+  return (
+    <UserContext.Provider value={{ users, setUsers }}>
+      <Routing />
+    </UserContext.Provider>
+  );
 };
 
 export default App;
