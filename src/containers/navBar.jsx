@@ -8,7 +8,6 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
@@ -91,7 +90,7 @@ function ResponsiveAppBar() {
               {pages.map((page) => (
                 <MenuItem onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                    <Link to={`/${page}`} style={{color:'white'}}>{page}</Link>
+                    <Link to={`/${page}`} style={{color:'black'}}>{page}</Link>
                   </Typography>
                 </MenuItem>
               ))}
