@@ -13,7 +13,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
 
-const pages = ["Products",'Blogs','Contact'];
+const pages = ["Products", "Blogs", "Contact"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
@@ -90,7 +90,9 @@ function ResponsiveAppBar() {
               {pages.map((page) => (
                 <MenuItem onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                    <Link to={`/${page}`} style={{color:'black'}}>{page}</Link>
+                    <Link to={`/${page}`} style={{ color: "black" }}>
+                      {page}
+                    </Link>
                   </Typography>
                 </MenuItem>
               ))}
@@ -118,10 +120,10 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">
-                    <Link to={`/${page}`}>{page}</Link>
-                  </Typography>
-                </MenuItem>
+                <Typography textAlign="center">
+                  <Link to={`/${page}`}>{page}</Link>
+                </Typography>
+              </MenuItem>
             ))}
           </Box>
 
