@@ -43,7 +43,7 @@ export default function PermanentDrawerLeft() {
                 <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>
-                <Link to={`/products/${text}`} style={{ color: "black" }}><ListItemText primary={text} /></Link>
+                <Link to={`/home/products/${text}`} style={{ color: "black" }}><ListItemText primary={text} /></Link>
               </ListItemButton>
             </ListItem>
           ))}

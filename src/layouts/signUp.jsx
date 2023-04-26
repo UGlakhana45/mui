@@ -133,8 +133,8 @@ export default function SignUp() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-            >
-              Sign Up
+            > <Link color="inherit" href="/signin">
+              Sign Up</Link>
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>

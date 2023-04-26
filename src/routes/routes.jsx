@@ -13,15 +13,15 @@ const Routing = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
-        <Route path="/" element={<MainLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/products" element={<AllProducts />}>
-            <Route path="/products/discount" element={<Discount />} />
-            <Route path="/products/Products" element={<ProductList />} />
+        <Route path="/home" element={<MainLayout />}>
+          <Route path="/home" element={<Home />} />
+          <Route path="/home/products" element={<AllProducts />}>
+            <Route path="/home/products/discount" element={<Discount />} />
+            <Route path="/home/products/Products" element={<ProductList />} />
           </Route>
-          <Route path="/Blogs" element={<BlogList />} />
+          <Route path="/home/Blogs" element={<BlogList />} />
         </Route>
       </Routes>
     </BrowserRouter>
