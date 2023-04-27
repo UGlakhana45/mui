@@ -8,6 +8,9 @@ import SignIn from "../layouts/signIn";
 import BlogList from "../containers/blogs";
 import ProductList from "../containers/products/products";
 import AllProducts from "../layouts/allProducts";
+import Electronics from "../containers/products/electronics";
+import HomeAppliances from "../containers/products/Home&Appliances";
+import Offers from "../containers/products/offers";
 
 const Routing = () => {
   return (
@@ -18,8 +21,11 @@ const Routing = () => {
         <Route path="/home" element={<MainLayout />}>
           <Route path="/home" element={<Home />} />
           <Route path="/home/products" element={<AllProducts />}>
-            <Route path="/home/products/discount" element={<Discount />} />
             <Route path="/home/products/Products" element={<ProductList />} />
+            <Route path="/home/products/discount" element={<Discount />} />
+            <Route path="/home/products/Electronics" element={<Electronics />} />
+            <Route path="/home/products/Home&Appliances" element={<HomeAppliances />} />
+            <Route path="/home/products/offers" element={<Offers />} />
           </Route>
           <Route path="/home/Blogs" element={<BlogList />} />
         </Route>

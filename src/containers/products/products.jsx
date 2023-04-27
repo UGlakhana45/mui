@@ -7,6 +7,7 @@ import {
   Typography,
   Container,
 } from "@mui/material";
+import CustomButton from "../../components/CustomButton";
 
 function ProductList() {
   const [products, setProducts] = useState([]);
@@ -24,23 +25,30 @@ function ProductList() {
       <Grid container spacing={5} sx={{ paddingTop: 10 }}>
         {products.map((product) => (
           <Grid item xs={12} sm={6} md={4} key={product.id}>
-            <Card sx={{height:'100%'}}>
+            <Card sx={{ height: "100%" }}>
               <CardMedia
                 component="img"
-                sx={{objectFit:'contain',height:"200px",}}
+                sx={{ objectFit: "contain", height: "200px" }}
                 image={product.image}
                 alt={product.title}
               />
-              <CardContent>
+              <CardContent
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginTop: "auto",
+                }}
+              >
                 <Typography variant="h5" component="h2">
                   {product.title}
                 </Typography>
-                <Typography color="textSecondary">
-                  {product.description}
-                </Typography>
+
                 <Typography variant="h6" component="h3">
                   ${product.price}
                 </Typography>
+                <CustomButton sx={{marginTop:'auto'}}>Shop Now</CustomButton>
               </CardContent>
             </Card>
           </Grid>

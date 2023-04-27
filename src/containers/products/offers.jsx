@@ -9,14 +9,23 @@ import {
 } from "@mui/material";
 import CustomButton from "../../components/CustomButton";
 
-function Discount() {
+function Offers() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    // Fetch data from the API and update the state
-    fetch("https://api.punkapi.com/v2/beers")
+    fetch("https://jsonplaceholder.typicode.com/photos?_limit=10")
       .then((response) => response.json())
-      .then((data) => setProducts(data))
+      .then((data) =>
+        setProducts(
+          data.map((product) => ({
+            id: product.id,
+            title: product.title,
+            image: product.url,
+            price: product.id * 10, // just a placeholder value for demo purposes
+            discount: Math.floor(Math.random() * 20), // random discount value between 0 and 19
+          }))
+        )
+      )
       .catch((error) => console.error(error));
   }, []);
 
@@ -29,8 +38,8 @@ function Discount() {
               <CardMedia
                 component="img"
                 sx={{ objectFit: "contain", height: "200px" }}
-                image={product.image_url}
-                alt={product.name}
+                image={product.image}
+                alt={product.title}
               />
               <CardContent
                 sx={{
@@ -42,13 +51,15 @@ function Discount() {
                 }}
               >
                 <Typography variant="h5" component="h2">
-                  {product.name}
+                  {product.title}
                 </Typography>
-
                 <Typography variant="h6" component="h3">
-                  {product.tagline}
+                  ${product.price}
                 </Typography>
-                <CustomButton sx={{marginTop:'auto'}}>Shop Now</CustomButton>
+                <Typography variant="h6" component="h3">
+                  {product.discount}% off
+                </Typography>
+                <CustomButton sx={{ marginTop: "auto" }}>Shop Now</CustomButton>
               </CardContent>
             </Card>
           </Grid>
@@ -58,4 +69,4 @@ function Discount() {
   );
 }
 
-export default Discount;
+export default Offers;

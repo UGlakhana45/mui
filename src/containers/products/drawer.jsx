@@ -37,7 +37,7 @@ export default function PermanentDrawerLeft() {
         <Toolbar />
         <Divider />
         <List>
-          {['Products', 'Discount', 'Send email', 'Drafts'].map((text, index) => (
+          {['Products', 'Discount', 'Electronics', 'Home&Appliances'].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
@@ -50,13 +50,13 @@ export default function PermanentDrawerLeft() {
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          {['offers', 'Trash', 'Spam'].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <Link to={`/home/products/${text}`} style={{ color: "black" }}><ListItemText primary={text} /></Link>
               </ListItemButton>
             </ListItem>
           ))}

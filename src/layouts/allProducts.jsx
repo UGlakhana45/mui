@@ -6,6 +6,7 @@ const AllProducts = () => {
   return (
     <div>
       <PermanentDrawerLeft />
+      <h1>hii</h1>
       <Outlet />
     </div>
   );
