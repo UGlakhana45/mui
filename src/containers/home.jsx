@@ -5,7 +5,9 @@ import SwipeableTextMobileStepper from "../components/swipable";
 const Home = () => {
   return (
     <div>
+    <Container>
       <SwipeableTextMobileStepper />
+        <h1>Discount</h1></Container>
     </div>
   );
 };
