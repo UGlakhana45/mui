@@ -3,8 +3,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainLayout from "../layouts/mainLayout";
 import Home from "../containers/home";
 import Discount from "../containers/products/discount";
-import SignUp from "../layouts/signUp";
-import SignIn from "../layouts/signIn";
+import SignUp from "../containers/signUp";
+import SignIn from "../containers/signIn";
 import BlogList from "../containers/blogs";
 import ProductList from "../containers/products/products";
 import AllProducts from "../layouts/allProducts";
@@ -12,7 +12,7 @@ import Electronics from "../containers/products/electronics";
 import HomeAppliances from "../containers/products/Home&Appliances";
 import Offers from "../containers/products/offers";
 import Profile from "../containers/profile";
-import ContactPage from "../containers/contact";
+import Contact from "../containers/contact";
 
 const Routing = () => {
   return (
@@ -33,7 +33,7 @@ const Routing = () => {
             <Route path="/products/offers" element={<Offers />} />
           </Route>
           <Route path="/Blogs" element={<BlogList />} />
-          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/profile" element={<Profile />} />
         </Route>
       </Routes>
