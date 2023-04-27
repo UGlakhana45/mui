@@ -119,9 +119,13 @@ function ResponsiveAppBar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">
-                  <Link to={`/home/${page}`}>{page}</Link>
+              <MenuItem
+                component={Link}
+                to={`/home/${page}`}
+                onClick={handleCloseNavMenu}
+              >
+                <Typography textAlign="center" color="white">
+                  {page}
                 </Typography>
               </MenuItem>
             ))}

@@ -5,6 +5,7 @@ import {
   CardContent,
   Typography,
   Container,
+  Box,
 } from "@mui/material";
 import CustomButton from "../../components/CustomButton";
 
@@ -24,8 +25,16 @@ function HomeAppliances() {
       <Grid container spacing={5} sx={{ paddingTop: 10 }}>
         {posts.map((post) => (
           <Grid item xs={12} sm={6} md={4} key={post.id}>
-            <Card sx={{ height: "100%" }}>
-              <CardContent
+            <Card
+              elevation={3}
+              sx={{
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                p: 2,
+              }}
+            >
+              <Box
                 sx={{
                   display: "flex",
                   flexDirection: "column",
@@ -38,12 +47,8 @@ function HomeAppliances() {
                   {post.title}
                 </Typography>
 
-                <Typography variant="body1" component="p" align="center">
-                  {post.body}
-                </Typography>
-
                 <CustomButton>Read More</CustomButton>
-              </CardContent>
+              </Box>
             </Card>
           </Grid>
         ))}
@@ -53,4 +58,3 @@ function HomeAppliances() {
 }
 
 export default HomeAppliances;
-

@@ -38,7 +38,6 @@ function SwipeableTextMobileStepper() {
                 component="img"
                 sx={{
                   display: "block",
-                  height: 750,
                   overflow: "hidden",
                   width: "100%",
                 }}
