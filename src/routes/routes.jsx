@@ -12,6 +12,7 @@ import Electronics from "../containers/products/electronics";
 import HomeAppliances from "../containers/products/Home&Appliances";
 import Offers from "../containers/products/offers";
 import Profile from "../containers/profile";
+import ContactPage from "../containers/contact";
 
 const Routing = () => {
   return (
@@ -24,10 +25,7 @@ const Routing = () => {
           <Route path="/products" element={<AllProducts />}>
             <Route index element={<ProductList />} />
             <Route path="/products/discount" element={<Discount />} />
-            <Route
-              path="/products/Electronics"
-              element={<Electronics />}
-            />
+            <Route path="/products/Electronics" element={<Electronics />} />
             <Route
               path="/products/Home&Appliances"
               element={<HomeAppliances />}
@@ -35,6 +33,7 @@ const Routing = () => {
             <Route path="/products/offers" element={<Offers />} />
           </Route>
           <Route path="/Blogs" element={<BlogList />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="/profile" element={<Profile />} />
         </Route>
       </Routes>
