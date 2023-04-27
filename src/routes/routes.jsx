@@ -17,25 +17,25 @@ const Routing = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<SignUp />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
-        <Route path="/home" element={<MainLayout />}>
-          <Route path="/home" element={<Home />} />
-          <Route path="/home/products" element={<AllProducts />}>
+        <Route path="/" element={<MainLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/products" element={<AllProducts />}>
             <Route index element={<ProductList />} />
-            <Route path="/home/products/discount" element={<Discount />} />
+            <Route path="/products/discount" element={<Discount />} />
             <Route
-              path="/home/products/Electronics"
+              path="/products/Electronics"
               element={<Electronics />}
             />
             <Route
-              path="/home/products/Home&Appliances"
+              path="/products/Home&Appliances"
               element={<HomeAppliances />}
             />
-            <Route path="/home/products/offers" element={<Offers />} />
+            <Route path="/products/offers" element={<Offers />} />
           </Route>
-          <Route path="/home/Blogs" element={<BlogList />} />
-          <Route path="/home/profile" element={<Profile />} />
+          <Route path="/Blogs" element={<BlogList />} />
+          <Route path="/profile" element={<Profile />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -44,7 +44,7 @@ function ResponsiveAppBar() {
             variant="h6"
             noWrap
             component="a"
-            href="/home"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -90,7 +90,7 @@ function ResponsiveAppBar() {
               {pages.map((page) => (
                 <MenuItem onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                    <Link to={`/home/${page}`} style={{ color: "black" }}>
+                    <Link to={`/${page}`} style={{ color: "black" }}>
                       {page}
                     </Link>
                   </Typography>
@@ -121,7 +121,7 @@ function ResponsiveAppBar() {
             {pages.map((page) => (
               <MenuItem
                 component={Link}
-                to={`/home/${page}`}
+                to={`/${page}`}
                 onClick={handleCloseNavMenu}
               >
                 <Typography textAlign="center" color="white">
@@ -155,7 +155,7 @@ function ResponsiveAppBar() {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Link to={`/home/${setting}`}>
+                  <Link to={`/${setting}`}>
                     {" "}
                     <Typography textAlign="center">{setting}</Typography>
                   </Link>

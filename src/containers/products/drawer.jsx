@@ -142,7 +142,7 @@ export default function MiniDrawer() {
           {["discount", "Electronics", "Home&Appliances"].map((text, index) => (
             <ListItem
               component={Link}
-              to={`/home/products/${text}`}
+              to={`/products/${text}`}
               key={text}
               disablePadding
               sx={{ display: "block", color: "black" }}
