@@ -23,13 +23,25 @@ const Contact = () => {
       }}
     >
       <Box
-        sx={{ flex: 1, maxWidth: "800px", mx: "auto", px: { xs: 2, md: 4 } }}
-      m={20}>
+        sx={{
+          flex: 1,
+          maxWidth: "800px",
+          mx: "auto",
+          px: { xs: 2, md: 4 },
+          my: { xs: 2, md: 4, xl: 10 },
+        }}
+      >
         <ContactPage />
       </Box>
       <Box
-        sx={{ flex: 1, maxWidth: "400px", mx: "auto", px: { xs: 2, md: 4 } }}
-      m={20}>
+        sx={{
+          flex: 1,
+          maxWidth: "400px",
+          mx: "auto",
+          px: { xs: 2, md: 4 },
+          my: { xs: 2, md: 4, xl: 10 },
+        }}
+      >
         <ContactMe />
       </Box>
     </ContactBox>

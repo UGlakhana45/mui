@@ -9,6 +9,7 @@ import {
   Box,
 } from "@mui/material";
 import CustomButton from "../../components/CustomButton";
+import { NavLink } from "react-router-dom";
 
 function Discount() {
   const [products, setProducts] = useState([]);
@@ -26,15 +27,15 @@ function Discount() {
       <Grid container spacing={5} sx={{ paddingTop: 10 }}>
         {products.map((product) => (
           <Grid item xs={12} sm={6} md={4} key={product.id}>
-          <Card
-          elevation={3}
-            sx={{
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-              p: 2,
-            }}
-          > 
+            <Card
+              elevation={3}
+              sx={{
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                p: 2,
+              }}
+            >
               <CardMedia
                 component="img"
                 sx={{ objectFit: "contain", height: "200px" }}
@@ -57,7 +58,13 @@ function Discount() {
                 <Typography variant="h6" component="h3">
                   {product.tagline}
                 </Typography>
-                <CustomButton sx={{marginTop:'auto'}}>Shop Now</CustomButton>
+                <CustomButton
+                  sx={{ marginTop: "auto", alignSelf: "bottom" }}
+                  component={NavLink}
+                  to={`/products/discount/productDetails/${product.id}`}
+                >
+                  Shop Now
+                </CustomButton>
               </Box>
             </Card>
           </Grid>

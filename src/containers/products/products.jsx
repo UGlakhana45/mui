@@ -9,6 +9,7 @@ import {
   Box,
 } from "@mui/material";
 import CustomButton from "../../components/CustomButton";
+import { Link, NavLink } from "react-router-dom";
 
 function ProductList() {
   const [products, setProducts] = useState([]);
@@ -27,7 +28,7 @@ function ProductList() {
         {products.map((product) => (
           <Grid item xs={12} sm={6} md={4} key={product.id}>
             <Card
-            elevation={3}
+              elevation={3}
               sx={{
                 height: "100%",
                 display: "flex",
@@ -57,7 +58,11 @@ function ProductList() {
                 <Typography variant="h6" component="h3">
                   ${product.price}
                 </Typography>
-                <CustomButton sx={{ marginTop: "auto", alignSelf: "bottom" }}>
+                <CustomButton
+                  sx={{ marginTop: "auto", alignSelf: "bottom" }}
+                  component={NavLink}
+                  to={`/products/productDetails/${product.id}`}
+                >
                   Shop Now
                 </CustomButton>
               </Box>
