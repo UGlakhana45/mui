@@ -5,7 +5,7 @@ import { css } from "@emotion/react";
 const ContactPageWrapper = styled(Box)(
   ({ theme }) => css`
     padding: 20px;
-    background: linear-gradient(120deg, #a1c4fd, #c2e9fb);
+    
     max-width: 500px;
     border-radius: 15px;
     width:100%;
@@ -18,7 +18,7 @@ const ContactFormWrapper = styled(Box)(
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
+    background-color: #f0fff4;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
@@ -46,7 +46,7 @@ const ContactForm = () => {
 
   return (
     <ContactFormWrapper>
-      <ContactFormTitle>Contact Me</ContactFormTitle>
+      <ContactFormTitle>Fill the to contact us</ContactFormTitle>
       <form onSubmit={handleSubmit}>
         <TextField
           label="Name"
@@ -79,7 +79,7 @@ const ContactForm = () => {
   );
 };
 
-const ContactPage = () => {
+const ContactMe = () => {
   return (
     <ContactPageWrapper>
       <ContactForm />
@@ -87,4 +87,4 @@ const ContactPage = () => {
   );
 };
 
-export default ContactPage;
+export default ContactMe;

@@ -1,33 +1,37 @@
-import { Box, css } from "@mui/material";
+import { Box } from "@mui/material";
 import React from "react";
-import ContactPage from "../components/contact";
 import styled from "@emotion/styled";
-import image from "../assets/images/contact.jpeg";
+import ContactPage from "../components/contactCard";
+import ContactMe from "../components/contactMe";
+
+const ContactBox = styled(Box)`
+  background: linear-gradient(to bottom, #cc2b5e, #753a88);
+`;
 
 const Contact = () => {
-  const ContactBox = styled(Box)(
-    ({ theme }) => css`
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      margin-top: 20px;
-      background-image: url(${image});
-      background-size: cover;
-      background-position: center;
-      height: 100vh;
-    `
-  );
-
   return (
-    <ContactBox>
-      <Box sx={{ maxWidth: "300px" }}>
-        <h3>
-          Talk with our sales team Fill out your information and our
-          representative will reach out to you. Have a simple question? Check
-          out our FAQ.
-        </h3>
+    <ContactBox
+      sx={{
+        flexDirection: { xs: "column", md: "row" },
+        alignItems: { xs: "center", md: "stretch" },
+        height: "auto",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <Box
+        sx={{ flex: 1, maxWidth: "800px", mx: "auto", px: { xs: 2, md: 4 } }}
+      m={20}>
+        <ContactPage />
       </Box>
-      <ContactPage />
+      <Box
+        sx={{ flex: 1, maxWidth: "400px", mx: "auto", px: { xs: 2, md: 4 } }}
+      m={20}>
+        <ContactMe />
+      </Box>
     </ContactBox>
   );
 };
