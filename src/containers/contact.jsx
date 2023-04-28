@@ -14,7 +14,7 @@ const Contact = () => {
       sx={{
         flexDirection: { xs: "column", md: "row" },
         alignItems: { xs: "center", md: "stretch" },
-        height: "auto",
+        height: {xs:'auto',md:'auto',xl:'100vh'},
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
