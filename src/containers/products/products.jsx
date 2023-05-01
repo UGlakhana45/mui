@@ -8,7 +8,7 @@ import {
   Box,
 } from "@mui/material";
 import CustomButton from "../../components/CustomButton";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { AxiosApi1 } from "../../api/axios";
 
 function ProductList() {

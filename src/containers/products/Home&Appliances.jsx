@@ -27,7 +27,7 @@ function HomeAppliances() {
         </Typography>
       ) : (
         <Grid container spacing={5} sx={{ paddingTop: 10 }}>
-          {posts.map((post) => (
+          {posts.slice(0,21).map((post) => (
             <Grid item xs={12} sm={6} md={4} key={post.id}>
               <Card
                 elevation={3}
