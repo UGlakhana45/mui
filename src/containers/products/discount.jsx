@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "../../api/axios";
+import { AxiosApi } from "../../api/axios";
 import {
   Grid,
   Card,
@@ -18,10 +18,11 @@ function Discount() {
 
   const getApiData = async () => {
     try {
-      const response = await axios.get("v2/beers");
+      const response = await AxiosApi.get("v2/beers");
       setProducts(response.data);
     } catch (error) {
-      setError(error);
+      setError(error.massage);
+      
     }
   };
 
