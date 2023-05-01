@@ -20,7 +20,7 @@ function Discount() {
     try {
       const response = await AxiosApi.get("v2/beers");
       setProducts(response.data);
-    } catch (error) {
+    } catch (error) { 
       setError(error.massage);
       
     }

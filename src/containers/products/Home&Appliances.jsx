@@ -1,22 +1,39 @@
 import { useState, useEffect } from "react";
 import { Grid, Card, Typography, Container, Box } from "@mui/material";
 import CustomButton from "../../components/CustomButton";
-import { AxiosApi2 } from "../../api/axios";
+import axios from 'axios';
 
 function HomeAppliances() {
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState("");
-  const apiCalling = async () => {
+
+  const fetchData = async () => {
+    const options = {
+      method: 'GET',
+      url: 'https://axesso-walmart-data-service.p.rapidapi.com/wlm/walmart-search-by-keyword',
+      params: {
+        keyword: 'Lego Star Wars',
+        page: '1',
+        sortBy: 'best_match'
+      },
+      headers: {
+        'X-RapidAPI-Key': 'ebcb04f743msh12963dd6b37240dp15afabjsn0c54c2c52cad',
+        'X-RapidAPI-Host': 'axesso-walmart-data-service.p.rapidapi.com'
+      }
+    };
     try {
-      const response = await AxiosApi2.get("/posts");
+      const response = await axios.request(options);
+      console.log(response.data);
       setPosts(response.data);
+      console.log(response)
     } catch (error) {
+      console.error(error);
       setError(error.message);
     }
   };
 
   useEffect(() => {
-    apiCalling();
+    fetchData();
   }, []);
 
   return (
