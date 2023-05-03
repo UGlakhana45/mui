@@ -43,7 +43,7 @@ function ResponsiveAppBar() {
           <Typography
             variant="h6"
             noWrap
-            component="a"
+            component={'a'}
             href="/"
             sx={{
               mr: 2,
@@ -88,7 +88,7 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem onClick={handleCloseNavMenu}>
+                <MenuItem onClick={handleCloseNavMenu} key={page}>
                   <Typography textAlign="center">
                     <Link to={`/${page}`} style={{ color: "black" }}>
                       {page}
@@ -102,7 +102,7 @@ function ResponsiveAppBar() {
           <Typography
             variant="h5"
             noWrap
-            component="a"
+            component={'a'}
             href="/"
             sx={{
               mr: 2,
@@ -120,6 +120,7 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <MenuItem
+                key={page}
                 component={Link}
                 to={`/${page}`}
                 onClick={handleCloseNavMenu}

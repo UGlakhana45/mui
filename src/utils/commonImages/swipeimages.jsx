@@ -14,15 +14,15 @@ export const SwipableImages = [
     imgPath: i2,
   },
   {
-    label: "Goč, Serbia",
+    label: "Go",
     imgPath: i4,
   },
   {
-    label: "Goč, Serbia",
+    label: "Goč",
     imgPath: i5,
   },
   {
-    label: "Goč, Serbia",
+    label: "GočSerbia",
     imgPath: i6,
   },
 ];

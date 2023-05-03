@@ -12,7 +12,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { UserContext } from "../App";
+
 import { api } from "../api";
 
 function Copyright(props) {
@@ -36,9 +36,7 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
-  const { users, setUsers } = React.useContext(UserContext);
-
-  const handleSubmit = async(event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const userData = new FormData(event.currentTarget);
     let email = userData.get("email");
@@ -71,11 +69,11 @@ export default function SignIn() {
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component={'h1'} variant="h5">
             Sign in
           </Typography>
           <Box
-            component="form"
+            component={'form'}
             onSubmit={handleSubmit}
             noValidate
             sx={{ mt: 1 }}
@@ -110,9 +108,7 @@ export default function SignIn() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              <Link color="inherit" href="/">
-                Sign In
-              </Link>
+              <Link color="inherit">Sign In</Link>
             </Button>
             <Grid container>
               <Grid item xs>

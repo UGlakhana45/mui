@@ -43,7 +43,7 @@ function ProductDetail() {
         <Grid item xs={12} md={6}>
           <Card>
             <CardMedia
-              component="img"
+              component={'img'}
               image={image}
               alt={title}
               sx={{ height: 600 }}
@@ -53,13 +53,13 @@ function ProductDetail() {
         <Grid item xs={12} md={6}>
           <Card>
             <CardContent>
-              <Typography variant="h4" component="h1">
+              <Typography variant="h4" component={'h1'}>
                 {title}
               </Typography>
               <Typography variant="h6" color="text.secondary">
                 {category}
               </Typography>
-              <Typography variant="h5" component="h2" sx={{ marginTop: 2 }}>
+              <Typography variant="h5" component={'h2'} sx={{ marginTop: 2 }}>
                 ${price}
               </Typography>
               <Typography variant="body1" sx={{ marginTop: 2 }}>

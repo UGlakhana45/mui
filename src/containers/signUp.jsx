@@ -12,7 +12,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { UserContext } from "../App";
+
 import { api } from "../api";
 import { NavLink } from "react-router-dom";
 
@@ -37,8 +37,6 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
-  const { user, setUser } = React.useContext(UserContext);
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -57,8 +55,8 @@ export default function SignUp() {
       password: password,
     };
     try {
-      const { data: registerData } = await api.auth.register(values);
-      console.log(registerData);
+      const response = await api.auth.register(values);
+      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -79,13 +77,13 @@ export default function SignUp() {
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component={'h1'} variant="h5">
             Sign up
           </Typography>
 
           <Box
             onSubmit={handleSubmit}
-            component="form"
+            component={'form'}
             noValidate
             sx={{ mt: 3 }}
           >
