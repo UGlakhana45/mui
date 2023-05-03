@@ -4,9 +4,9 @@ import Signin from "./ref/signin";
 
 export const UserContext = createContext();
 const App = () => {
-  const [users, setUsers] = React.useState([]);
+  const [user, setUser] = React.useState([]);
   return (
-    <UserContext.Provider value={{ users, setUsers }}>
+    <UserContext.Provider value={{ user, setUser }}>
       <Routing />
     </UserContext.Provider>
   );

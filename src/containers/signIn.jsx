@@ -13,6 +13,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { UserContext } from "../App";
+import { api } from "../api";
 
 function Copyright(props) {
   return (
@@ -37,12 +38,22 @@ const theme = createTheme();
 export default function SignIn() {
   const { users, setUsers } = React.useContext(UserContext);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
     const userData = new FormData(event.currentTarget);
     let email = userData.get("email");
     let password = userData.get("password");
     console.log(email, password);
+    const values = {
+      email: email,
+      password: password,
+    };
+    try {
+      const { data: registerData } = await api.auth.login(values);
+      console.log(registerData);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -98,8 +109,10 @@ export default function SignIn() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-            ><Link color="inherit" href="/">
-              Sign In</Link>
+            >
+              <Link color="inherit" href="/">
+                Sign In
+              </Link>
             </Button>
             <Grid container>
               <Grid item xs>

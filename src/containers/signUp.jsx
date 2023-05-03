@@ -13,6 +13,8 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { UserContext } from "../App";
+import { api } from "../api";
+import { NavLink } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -35,21 +37,31 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
-  const { users, setUsers } = React.useContext(UserContext);
+  const { user, setUser } = React.useContext(UserContext);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+
     const userData = new FormData(event.currentTarget);
-    console.log({
-      email: userData.get("email"),
-      password: userData.get("password"),
-    });
-    let user = {
-      email: userData.get("email"),
-      password: userData.get("password"),
+    console.log(userData);
+
+    const firstName = userData.get("firstName");
+    const lastName = userData.get("lastName");
+    const email = userData.get("email");
+    const password = userData.get("password");
+
+    const values = {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password,
     };
-    setUsers([...users, user]);
-    console.log(users);
+    try {
+      const { data: registerData } = await api.auth.register(values);
+      console.log(registerData);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -70,10 +82,11 @@ export default function SignUp() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
+
           <Box
+            onSubmit={handleSubmit}
             component="form"
             noValidate
-            onSubmit={handleSubmit}
             sx={{ mt: 3 }}
           >
             <Grid container spacing={2}>
@@ -119,28 +132,20 @@ export default function SignUp() {
                   autoComplete="new-password"
                 />
               </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={
-                    <Checkbox value="allowExtraEmails" color="primary" />
-                  }
-                  label="I agree to receive inspiration, marketing promotions and updates via email."
-                />
-              </Grid>
             </Grid>
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-            > <Link color="inherit" href="/signin">
-              Sign Up</Link>
+            >
+              <Link color="inherit">Sign Up</Link>
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Typography to="/login" component={NavLink}>
                   Already have an account? Sign in
-                </Link>
+                </Typography>
               </Grid>
             </Grid>
           </Box>
