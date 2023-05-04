@@ -14,6 +14,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import { api } from "../api";
+import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -36,6 +37,8 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
+  const [error, setError] = React.useState(null);
+  const navigate = useNavigate();
   const handleSubmit = async (event) => {
     event.preventDefault();
     const userData = new FormData(event.currentTarget);
@@ -47,10 +50,12 @@ export default function SignIn() {
       password: password,
     };
     try {
-      const { data: registerData } = await api.auth.login(values);
-      console.log(registerData);
+      const response = await api.auth.login(values);
+      console.log(response);
+      navigate("/");
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
+      setError(error.message.fail);
     }
   };
 
@@ -69,11 +74,11 @@ export default function SignIn() {
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component={'h1'} variant="h5">
+          <Typography component={"h1"} variant="h5">
             Sign in
           </Typography>
           <Box
-            component={'form'}
+            component={"form"}
             onSubmit={handleSubmit}
             noValidate
             sx={{ mt: 1 }}
@@ -87,6 +92,7 @@ export default function SignIn() {
               name="email"
               autoComplete="email"
               autoFocus
+              
             />
             <TextField
               margin="normal"
@@ -97,11 +103,10 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+              error={Boolean(error)}
+              helperText={error || " "}
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
+
             <Button
               type="submit"
               fullWidth
