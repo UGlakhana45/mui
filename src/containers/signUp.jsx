@@ -41,8 +41,6 @@ export default function SignUp() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
-  const [error, setError] = useState(null);
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -78,14 +76,14 @@ export default function SignUp() {
       setPasswordError(false);
     }
 
-    if(firstName && lastName && email && password){
+    if (firstName && lastName && email && password) {
       const values = {
         firstName: firstName,
         lastName: lastName,
         email: email,
         password: password,
       };
-  
+
       try {
         const response = await api.auth.register(values);
         console.log(response.data);
@@ -95,32 +93,30 @@ export default function SignUp() {
         setEmailError("email is alredy registered");
       }
     }
-    
   };
-  const handleFirstNameChange = (event) =>{
+  const handleFirstNameChange = (event) => {
     if (!event.target.value) {
       setFirstNameError("Please enter your first name");
     } else {
       setFirstNameError("");
     }
-  }
-  const handleLastNameChange = (event) =>{
+  };
+  const handleLastNameChange = (event) => {
     if (!event.target.value) {
       setLastNameError("Please enter your Last name");
     } else {
       setLastNameError("");
     }
-  }
-  const handleEmailChange = (event) =>{
+  };
+  const handleEmailChange = (event) => {
     if (!event.target.value) {
       setEmailError("Please enter your Email");
-    }else if(!event.target.value.includes("@")){
+    } else if (!event.target.value.includes("@")) {
       setEmailError("invalid email format");
-    }
-    else {
+    } else {
       setEmailError("");
     }
-  }
+  };
   const handlePasswordChange = (event) => {
     if (event.target.value.length < 8) {
       setPasswordError("Password must be at least 8 characters long.");
@@ -177,7 +173,7 @@ export default function SignUp() {
                   id="lastName"
                   label="Last Name"
                   name="lastName"
-                 onChange={handleLastNameChange}
+                  onChange={handleLastNameChange}
                   autoComplete="family-name"
                   error={Boolean(lastNameError)}
                   helperText={lastNameError}
