@@ -1,9 +1,14 @@
-import React, { createContext } from "react";
+import React from "react";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 import Routing from "./routes/routes";
-import Signin from "./ref/signin";
 
 const App = () => {
-  return <Routing />;
+  return (
+    <Provider store={store}>
+      <Routing />
+    </Provider>
+  );
 };
 
 export default App;

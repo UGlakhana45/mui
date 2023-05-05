@@ -3,6 +3,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import ContactPage from "../components/contactCard";
 import ContactMe from "../components/contactMe";
+import { Counter } from "../redux/test";
 
 const ContactBox = styled(Box)`
   background: linear-gradient(to bottom, #cc2b5e, #753a88);
@@ -17,7 +18,6 @@ const Contact = () => {
         height: {xs:'auto',md:'auto',xl:'100vh'},
         display: "flex",
         justifyContent: "center",
-        alignItems: "center",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -44,7 +44,9 @@ const Contact = () => {
       >
         <ContactMe />
       </Box>
+      <Counter />
     </ContactBox>
+    
   );
 };
 
