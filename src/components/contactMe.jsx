@@ -46,7 +46,7 @@ const ContactForm = () => {
 
   return (
     <ContactFormWrapper>
-      <ContactFormTitle>Fill the to contact us</ContactFormTitle>
+      <ContactFormTitle>Fill this to contact us</ContactFormTitle>
       <form onSubmit={handleSubmit}>
         <TextField
           label="Name"

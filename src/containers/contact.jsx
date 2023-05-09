@@ -45,6 +45,7 @@ const Contact = () => {
         <ContactMe />
       </Box>
       <Counter />
+      
     </ContactBox>
     
   );
