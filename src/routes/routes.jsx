@@ -13,7 +13,7 @@ import HomeAppliances from "../containers/products/Home&Appliances";
 import Offers from "../containers/products/offers";
 import Profile from "../containers/profile";
 import Contact from "../containers/contact";
-import ProductDetails from "../containers/productDetail";
+import ProductDetails from "../containers/products/productDetail";
 
 const Routing = () => {
   return (
@@ -25,21 +25,12 @@ const Routing = () => {
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<AllProducts />}>
             <Route index element={<ProductList />} />
-            <Route path="/products/discount" element={<Discount />} />
-            <Route path="/products/:Electronics" element={<Electronics />} />
-            <Route
-              path="/products/Home&Appliances"
-              element={<HomeAppliances />}
-            />
-            <Route path="/products/offers" element={<Offers />} />
-            <Route
-              path="/products/productDetails/:id"
-              element={<ProductDetails />}
-            />
-            <Route
-              path="/products/discount/productDetails/:did"
-              element={<ProductDetails />}
-            />
+            <Route path="discount" element={<Discount />} />
+            <Route path="electronics" element={<Electronics />} />
+            <Route path="Home&Appliances" element={<HomeAppliances />} />
+            <Route path="offers" element={<Offers />} />
+            <Route path=":id" element={<ProductDetails />} />
+            <Route path=":did" element={<ProductDetails />} />
           </Route>
           <Route path="/Blogs" element={<BlogList />} />
           <Route path="/contact" element={<Contact />} />

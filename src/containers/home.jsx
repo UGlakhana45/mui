@@ -8,9 +8,7 @@ const Home = () => {
   return (
     <div>
       <ImageSwiper />
-      <Link to="products/discount">
-        <Box component="img" src={discount} sx={{ width: "100%" }}></Box>
-      </Link>
+        <Box component="img" src={discount} sx={{ width: "100%" }} mb={"-4px"}></Box>
       <Contact />
     </div>
   );

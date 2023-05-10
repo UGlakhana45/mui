@@ -72,7 +72,7 @@ function ProductList() {
                   <CustomButton
                     sx={{ marginTop: "auto", alignSelf: "bottom" }}
                     component={NavLink}
-                    to={`/products/productDetails/${product.id}`}
+                    to={`${product.id}`}
                   >
                     Shop Now
                   </CustomButton>

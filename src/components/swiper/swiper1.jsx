@@ -36,7 +36,6 @@ export default function ImageSwiper() {
   return (
     <>
       <Swiper
-        style={{ height:screenSize.height/1.2,width:screenSize.width*0.9925 }}
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
@@ -52,7 +51,11 @@ export default function ImageSwiper() {
       >
         {SwipableImages.map((image, index) => (
           <SwiperSlide>
-            <img src={image.imgPath} alt="Image" style={{resize:'contain'}}/>
+            <img
+              src={image.imgPath}
+              alt="Image"
+              style={{ width:"100%", maxHeight:"600px", objectFit:"cover" }}
+            />
           </SwiperSlide>
         ))}
       </Swiper>
