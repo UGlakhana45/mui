@@ -36,14 +36,19 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar style={{ zIndex: 9999999 }} position="sticky">
+    <AppBar
+      style={{ zIndex: 9999999,background: "linear-gradient(to bottom, #000000, #333333)"}}
+      position="sticky"
+    >
+    
+    
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
-            component={'a'}
+            component={"a"}
             href="/"
             sx={{
               mr: 2,
@@ -102,7 +107,7 @@ function ResponsiveAppBar() {
           <Typography
             variant="h5"
             noWrap
-            component={'a'}
+            component={"a"}
             href="/"
             sx={{
               mr: 2,

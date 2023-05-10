@@ -18,7 +18,6 @@ const Contact = () => {
         justifyContent: "center",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        
         margin: "auto", // center horizontally and vertically
       }}
     >
