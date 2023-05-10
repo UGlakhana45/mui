@@ -5,10 +5,10 @@ import { css } from "@emotion/react";
 const ContactPageWrapper = styled(Box)(
   ({ theme }) => css`
     padding: 20px;
-    
+
     max-width: 500px;
     border-radius: 15px;
-    width:100%;
+    width: 100%;
   `
 );
 

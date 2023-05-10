@@ -10,6 +10,7 @@ import { styled } from "@mui/material/styles";
 
 const ContactCard = styled(Card)({
   maxWidth: 800, // doubled the width
+  width:'100%',
   margin: "0 auto",
   backgroundColor: "#f9f9f9",
   boxShadow: "0px 3px 10px rgba(0,0,0,0.3)", // added a box shadow

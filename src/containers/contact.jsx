@@ -15,7 +15,7 @@ const Contact = () => {
       sx={{
         flexDirection: { xs: "column", md: "row" },
         alignItems: { xs: "center", md: "stretch" },
-        height: {xs:'auto',md:'auto',xl:'100vh'},
+        height: { xs: "auto", md: "auto", xl: "70vh" },
         display: "flex",
         justifyContent: "center",
         backgroundSize: "cover",
@@ -26,7 +26,8 @@ const Contact = () => {
         sx={{
           flex: 1,
           maxWidth: "800px",
-          mx: "auto",
+          width:'100%',
+          mx: 10, 
           px: { xs: 2, md: 4 },
           my: { xs: 2, md: 4, xl: 10 },
         }}
@@ -45,9 +46,7 @@ const Contact = () => {
         <ContactMe />
       </Box>
       <Counter />
-      
     </ContactBox>
-    
   );
 };
 
