@@ -1,3 +1,10 @@
+
+
+
+//just tried Firebse authentication for personal reference and it's working so had it as a reference in ref folder.
+
+
+
 import React, { useState } from "react";
 import { auth } from "../config/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
