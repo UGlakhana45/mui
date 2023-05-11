@@ -9,16 +9,12 @@ import BlogList from "../containers/blogs";
 import ProductList from "../containers/products/products";
 import AllProducts from "../layouts/allProducts";
 import Electronics from "../containers/products/electronics";
-import HomeAppliances from "../containers/products/Home&Appliances";
 import Offers from "../containers/products/offers";
 import Profile from "../containers/profile";
 import Contact from "../containers/contact";
 import ProductDetails from "../containers/products/productDetail";
 
 const Routing = () => {
-  const tokenData = localStorage.getItem("tokenData");
-  const token = JSON.parse(tokenData);
-
   return (
     <BrowserRouter>
       <Routes>
@@ -30,7 +26,6 @@ const Routing = () => {
             <Route index element={<ProductList />} />
             <Route path="discount" element={<Discount />} />
             <Route path="electronics" element={<Electronics />} />
-            <Route path="Home&Appliances" element={<HomeAppliances />} />
             <Route path="offers" element={<Offers />} />
             <Route path=":id" element={<ProductDetails />} />
             <Route path=":did" element={<ProductDetails />} />

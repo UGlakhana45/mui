@@ -29,7 +29,7 @@ function ProductDetail() {
         .then((data) => setProduct(data))
         .catch((error) => console.error(error));
     }
-  }, [id]);
+  }, [id,did]);
 
   if (!product) {
     return <div>Loading...</div>;
