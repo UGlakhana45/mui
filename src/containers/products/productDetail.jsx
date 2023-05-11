@@ -46,7 +46,7 @@ function ProductDetail() {
               component={'img'}
               image={image}
               alt={title}
-              sx={{ height: 700 }}
+              sx={{ maxHeight:500,objectFit:'contain' }}
             />
           </Card>
         </Grid>

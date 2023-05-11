@@ -10,7 +10,9 @@ import { styled } from "@mui/material/styles";
 
 const ContactCard = styled(Card)({
   maxWidth: 800, // doubled the width
-  width:'100%',
+  width: "100%",
+  alignItems: "center",
+  justifyContent: "center",
   margin: "0 auto",
   backgroundColor: "#f9f9f9",
   boxShadow: "0px 3px 10px rgba(0,0,0,0.3)", // added a box shadow
@@ -22,6 +24,7 @@ const ContactHeader = styled(CardHeader)({
   textAlign: "center",
   marginBottom: 16, // added some bottom margin
   textDecoration: "underline", // added an underline
+  fontSize:24,
 });
 
 const ContactDetails = styled(CardContent)({
@@ -33,6 +36,8 @@ const ContactItem = styled(Typography)({
   display: "flex",
   alignItems: "center",
   margin: "16px 0", // increased margin
+  alignSelf: "center",
+  fontSize: 24,
 });
 
 const ContactIcon = styled("span")({
@@ -43,31 +48,31 @@ function ContactPage() {
   return (
     <ContactCard>
       <ContactHeader title="Contact Me" />
-      <Divider />
+      <Divider sx={{color:'brown', margin:5}} />
       <ContactDetails>
         <ContactItem>
           <ContactIcon>
             <MailOutline />
           </ContactIcon>
-          <Typography variant="body1">udayl.itpath@gmail.com</Typography>
+          udayl.itpath@gmail.com
         </ContactItem>
         <ContactItem>
           <ContactIcon>
             <Phone />
           </ContactIcon>
-          <Typography variant="body1">+91 8200504513</Typography>
+          +91 8200504513
         </ContactItem>
         <ContactItem>
           <ContactIcon>
             <Fax />
           </ContactIcon>
-          <Typography variant="body1">+1-234-567-8901</Typography>
+          +1-234-567-8901
         </ContactItem>
         <ContactItem>
           <ContactIcon>
             <LocationCity />
           </ContactIcon>
-          <Typography variant="body1">Bodakdev-380054,ahemdabad</Typography>
+          Bodakdev-380054,ahemdabad
         </ContactItem>
       </ContactDetails>
     </ContactCard>

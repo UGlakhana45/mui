@@ -20,14 +20,13 @@ function Discount() {
     try {
       const response = await AxiosApi.get("v2/beers");
       setProducts(response.data);
-    } catch (error) { 
+    } catch (error) {
       setError(error.massage);
-      
     }
   };
 
   useEffect(() => {
-    // Now you can use the axios library to make HTTP requests
+    // axios library to make HTTP requests
     getApiData();
   }, []);
 
@@ -75,7 +74,7 @@ function Discount() {
                   <CustomButton
                     sx={{ marginTop: "auto", alignSelf: "bottom" }}
                     component={NavLink}
-                    to={`/products/discount/productDetails/${product.id}`}
+                    to={`${product.id}`}
                   >
                     Shop Now
                   </CustomButton>
