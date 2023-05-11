@@ -13,24 +13,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import { api } from "../api";
 import { useNavigate } from "react-router-dom";
-
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+import Copyright from "../components/copyright";
+import { enqueueSnackbar } from "notistack";
 
 const theme = createTheme();
 
@@ -48,11 +32,11 @@ export default function SignIn() {
       password: password,
     };
     try {
-      const {data} = await api.auth.login(values);
+      const { data } = await api.auth.login(values);
       const tokenData = JSON.stringify(data);
-      localStorage.setItem("tokenData",tokenData);
+      localStorage.setItem("tokenData", tokenData);
       // console.log(response);
-      alert("Login Successfull");
+      enqueueSnackbar("Login successfully", { variant: "success" });
       navigate("/");
     } catch (error) {
       console.log(error.message);
@@ -93,7 +77,6 @@ export default function SignIn() {
               name="email"
               autoComplete="email"
               autoFocus
-              
             />
             <TextField
               margin="normal"

@@ -14,6 +14,7 @@ import { api } from "../api";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Copyright from "../components/copyright";
+import { enqueueSnackbar } from "notistack";
 
 const theme = createTheme();
 
@@ -70,6 +71,7 @@ export default function SignUp() {
       try {
         const response = await api.auth.register(values);
         console.log(response.data);
+        enqueueSnackbar("Registeration successfull", { variant: "success" });
         navigate("/signin");
       } catch (error) {
         console.log(error);
@@ -111,104 +113,106 @@ export default function SignUp() {
   };
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component={"h1"} variant="h5">
-            Sign up
-          </Typography>
-
+      <div>
+        <Container component="main" maxWidth="xs">
+          <CssBaseline />
           <Box
-            onSubmit={handleSubmit}
-            component={"form"}
-            noValidate
-            sx={{ mt: 3 }}
+            sx={{
+              marginTop: 8,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
           >
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
-                  onChange={handleFirstNameChange}
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  error={Boolean(firstNameError)}
-                  helperText={firstNameError}
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  onChange={handleLastNameChange}
-                  autoComplete="family-name"
-                  error={Boolean(lastNameError)}
-                  helperText={lastNameError}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                  onChange={handleEmailChange}
-                  error={Boolean(emailError)}
-                  helperText={emailError}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  onChange={handlePasswordChange}
-                  id="password"
-                  autoComplete="new-password"
-                  error={Boolean(passwordError)}
-                  helperText={passwordError}
-                />
-              </Grid>
-            </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component={"h1"} variant="h5">
+              Sign up
+            </Typography>
+
+            <Box
+              onSubmit={handleSubmit}
+              component={"form"}
+              noValidate
+              sx={{ mt: 3 }}
             >
-              <Link color="inherit">Sign Up</Link>
-            </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Typography to="/signin" component={NavLink}>
-                  Already have an account? Sign in
-                </Typography>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    autoComplete="given-name"
+                    name="firstName"
+                    required
+                    onChange={handleFirstNameChange}
+                    fullWidth
+                    id="firstName"
+                    label="First Name"
+                    error={Boolean(firstNameError)}
+                    helperText={firstNameError}
+                    autoFocus
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="lastName"
+                    label="Last Name"
+                    name="lastName"
+                    onChange={handleLastNameChange}
+                    autoComplete="family-name"
+                    error={Boolean(lastNameError)}
+                    helperText={lastNameError}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email Address"
+                    name="email"
+                    autoComplete="email"
+                    onChange={handleEmailChange}
+                    error={Boolean(emailError)}
+                    helperText={emailError}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    name="password"
+                    label="Password"
+                    type="password"
+                    onChange={handlePasswordChange}
+                    id="password"
+                    autoComplete="new-password"
+                    error={Boolean(passwordError)}
+                    helperText={passwordError}
+                  />
+                </Grid>
               </Grid>
-            </Grid>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                <Link color="inherit">Sign Up</Link>
+              </Button>
+              <Grid container justifyContent="flex-end">
+                <Grid item>
+                  <Typography to="/signin" component={NavLink}>
+                    Already have an account? Sign in
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Box>
           </Box>
-        </Box>
-        <Copyright sx={{ mt: 5 }} />
-      </Container>
+          <Copyright sx={{ mt: 5 }} />
+        </Container>
+      </div>
     </ThemeProvider>
   );
 }

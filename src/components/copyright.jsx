@@ -11,13 +11,13 @@ function Copyright(props) {
       {...props}
     >
       {" © "}
-      {new Date().getFullYear()}
+      {new Date().getFullYear()}{" "}
       <Link
         color="inherit"
         to="mui-theta.vercel.app"
         target="blank"
       >
-       Your Shopping Site Pvt.Ltd.
+        Your Shopping Site Pvt.Ltd.
       </Link>{" "}
       {"."}
     </Typography>
