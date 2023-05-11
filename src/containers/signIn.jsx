@@ -48,8 +48,11 @@ export default function SignIn() {
       password: password,
     };
     try {
-      const response = await api.auth.login(values);
-      console.log(response);
+      const {data} = await api.auth.login(values);
+      const tokenData = JSON.stringify(data);
+      localStorage.setItem("tokenData",tokenData);
+      // console.log(response);
+      alert("Login Successfull");
       navigate("/");
     } catch (error) {
       console.log(error.message);

@@ -11,14 +11,16 @@ import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const pages = ["Products", "Contact"];
-const settings = ["profile", "Account", "Dashboard", "Logout"];
+const settings = ["profile", "Account", "Dashboard"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -34,14 +36,19 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-
+  const logOut = () => {
+    handleCloseNavMenu();
+    localStorage.clear();
+    navigate("/signin");
+  };
   return (
     <AppBar
-      style={{ zIndex: 9999999,background: "linear-gradient(to bottom, #000000, #333333)"}}
+      style={{
+        zIndex: 9999999,
+        background: "linear-gradient(to bottom, #000000, #333333)",
+      }}
       position="sticky"
     >
-    
-    
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
@@ -167,6 +174,11 @@ function ResponsiveAppBar() {
                   </Link>
                 </MenuItem>
               ))}
+              <MenuItem key="logout" onClick={logOut} sx={{ color: "red" }}>
+                <Typography variant="inherit" underline="true">
+                  Logout
+                </Typography>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>

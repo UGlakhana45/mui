@@ -16,6 +16,9 @@ import Contact from "../containers/contact";
 import ProductDetails from "../containers/products/productDetail";
 
 const Routing = () => {
+  const tokenData = localStorage.getItem("tokenData");
+  const token = JSON.parse(tokenData);
+
   return (
     <BrowserRouter>
       <Routes>

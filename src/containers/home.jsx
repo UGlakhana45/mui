@@ -3,11 +3,16 @@ import React from "react";
 import discount from "../assets/images/special-offer-sale-banner-besign-discount-label-and-sticker-for-media-promotion-product-free-vector.webp";
 import Contact from "./contact";
 import ImageSwiper from "../components/swiper/swiper1";
+import CategoryGrid from "../components/catogoryGrid";
 const Home = () => {
   return (
-    <Container>
+    <>
       <ImageSwiper />
-    </Container>
+      <Container>
+        
+      </Container>
+      <CategoryGrid />
+      </>
   );
 };
 
