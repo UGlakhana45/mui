@@ -1,16 +1,12 @@
 import React from "react";
 import {
   Container,
-  Grid,
   Paper,
   Typography,
   Avatar,
   List,
   ListItem,
-  ListItemAvatar,
   ListItemText,
-  Divider,
-  Button,
   IconButton,
 } from "@mui/material";
 import { FavoriteBorder, Delete } from "@mui/icons-material";
