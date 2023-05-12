@@ -35,6 +35,7 @@ export default function SignUp() {
     const lastName = userData.get("lastName");
     const email = userData.get("email");
     const password = userData.get("password");
+    
     if (!firstName) {
       setFirstNameError("First Name is required.");
     } else {

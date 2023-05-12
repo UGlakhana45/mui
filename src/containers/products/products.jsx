@@ -8,8 +8,8 @@ import {
   Box,
 } from "@mui/material";
 import CustomButton from "../../components/CustomButton";
-import { NavLink } from "react-router-dom";
-import { AxiosApi1 } from "../../api/axios";
+import { Link} from "react-router-dom";
+import { api } from "../../api";
 
 function ProductList() {
   const [products, setProducts] = useState([]);
@@ -17,8 +17,9 @@ function ProductList() {
 
   const apiCalling = async () => {
     try {
-      const response = await AxiosApi1.get("/products");
-      setProducts(response.data);
+      const { data: productData } = await api.product.get();
+      setProducts(productData.productlist);
+      console.log("product Data", productData.productlist);
     } catch (error) {
       setError(error.message);
     }
@@ -50,8 +51,8 @@ function ProductList() {
                 <CardMedia
                   component="img"
                   sx={{ objectFit: "contain", height: "200px" }}
-                  image={product.image}
-                  alt={product.title}
+                  image={`https://ecommerceserver-4zw1.onrender.com/${product.image}`}
+                  alt={product.name}
                 />
                 <Box
                   sx={{
@@ -63,7 +64,7 @@ function ProductList() {
                   }}
                 >
                   <Typography variant="h5" component="h2">
-                    {product.title}
+                    {product.name}
                   </Typography>
 
                   <Typography variant="h6" component="h3">
@@ -71,7 +72,7 @@ function ProductList() {
                   </Typography>
                   <CustomButton
                     sx={{ marginTop: "auto", alignSelf: "bottom" }}
-                    component={NavLink}
+                    component={Link}
                     to={`${product.id}`}
                   >
                     Shop Now

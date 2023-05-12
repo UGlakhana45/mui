@@ -1,6 +1,5 @@
-import { Box, Container, Typography } from "@mui/material";
 import React from "react";
-import discount from "../assets/images/special-offer-sale-banner-besign-discount-label-and-sticker-for-media-promotion-product-free-vector.webp";
+import discount from "../assets/images/beerDiscount.png";
 import Contact from "./contact";
 import ImageSwiper from "../components/swiper/swiper1";
 import CategoryGrid from "../components/catogoryGrid";
@@ -10,10 +9,10 @@ const Home = () => {
   return (
     <>
       <ImageSwiper />
-      <img src={IMAGES.catogory} style={{ width: "100%" }} />
+      <img src={IMAGES.catogory} style={{ width: "100%" }} alt="Shop By catogory" />
       <CategoryGrid />
       <Link to="/products/discount">
-        <img src={discount} style={{width:'100%'}}/>
+        <img src={discount} style={{width:'100%',height:"500px"}}  alt="Beer Discount \n must have Offer"/>
       </Link>
       <Contact />
     </>

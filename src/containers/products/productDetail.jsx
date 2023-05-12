@@ -10,26 +10,22 @@ import {
   Box,
   Button,
 } from "@mui/material";
+import { api } from "../../api";
 
 function ProductDetail() {
-  const { id, did } = useParams();
+  const { id } = useParams();
   const [product, setProduct] = useState(null);
   console.log(id);
+
+  const getProduct = async () => {
+    const { data } = await api.product.getProductById(id);
+    setProduct(data.product);
+    console.log(data.product);
+  };
+
   useEffect(() => {
-    
-    if (id) {
-      fetch(`https://fakestoreapi.com/products/${id}`)
-        .then((response) => response.json())
-        .then((data) => setProduct(data))
-        .catch((error) => console.error(error));
-    }
-    else {
-      fetch(`https://api.punkapi.com/v2/beers/${did}`)
-        .then((response) => response.json())
-        .then((data) => setProduct(data))
-        .catch((error) => console.error(error));
-    }
-  }, [id,did]);
+    getProduct();
+  }, [product]);
 
   if (!product) {
     return <div>Loading...</div>;
@@ -43,27 +39,27 @@ function ProductDetail() {
         <Grid item xs={12} md={6}>
           <Card>
             <CardMedia
-              component={'img'}
-              image={image}
-              alt={title}
-              sx={{ maxHeight:500,objectFit:'contain' }}
+              component={"img"}
+              image={`https://ecommerceserver-4zw1.onrender.com/${product.image}`}
+              alt={product.name}
+              sx={{ maxHeight: 500, objectFit: "contain", padding: "15px" }}
             />
           </Card>
         </Grid>
         <Grid item xs={12} md={6}>
           <Card>
             <CardContent>
-              <Typography variant="h4" component={'h1'}>
-                {title}
+              <Typography variant="h4" component={"h1"}>
+                {product.name}
               </Typography>
               <Typography variant="h6" color="text.secondary">
-                {category}
+                In Stock 5 Availabel
               </Typography>
-              <Typography variant="h5" component={'h2'} sx={{ marginTop: 2 }}>
-                ${price}
+              <Typography variant="h5" component={"h2"} sx={{ marginTop: 2 }}>
+                ${product.price}
               </Typography>
               <Typography variant="body1" sx={{ marginTop: 2 }}>
-                {description}
+                {product.desc}
               </Typography>
               <Box sx={{ marginTop: 2 }}>
                 <Button variant="contained" size="large">

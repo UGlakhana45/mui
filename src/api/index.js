@@ -26,13 +26,13 @@ export const api = {
     product: {
         get: (data) =>
             client({
-                url: '/product',
+                url: '/api/product/get_all_product',
                 method: METHODS.GET,
                 ...data
             }),
         getProductById: (id) =>
             client({
-                url: `/product/${id}`,
+                url: `/api/product/getproductbyid/${id}`,
                 method: METHODS.GET
             }),
         post: (params) =>

@@ -1,51 +1,45 @@
 import { useState, useEffect } from "react";
-import { Grid, Card, Typography, Container, Box } from "@mui/material";
+import {
+  Grid,
+  Card,
+  CardMedia,
+  Typography,
+  Container,
+  Box,
+} from "@mui/material";
 import CustomButton from "../../components/CustomButton";
-import axios from 'axios';
+import { NavLink } from "react-router-dom";
+import { AxiosApi1 } from "../../api/axios";
+import { api } from "../../api";
 
 function HomeAppliances() {
-  const [posts, setPosts] = useState([]);
+  const [products, setProducts] = useState([]);
   const [error, setError] = useState("");
 
-  const fetchData = async () => {
-    const options = {
-      method: 'GET',
-      url: 'https://axesso-walmart-data-service.p.rapidapi.com/wlm/walmart-search-by-keyword',
-      params: {
-        keyword: 'Lego Star Wars',
-        page: '1',
-        sortBy: 'best_match'
-      },
-      headers: {
-        'X-RapidAPI-Key': 'ebcb04f743msh12963dd6b37240dp15afabjsn0c54c2c52cad',
-        'X-RapidAPI-Host': 'axesso-walmart-data-service.p.rapidapi.com'
-      }
-    };
+  const apiCalling = async () => {
     try {
-      const response = await axios.request(options);
-      console.log(response.data);
-      setPosts(response.data);
-      console.log(response)
+      const { data: productData } = await api.product.get();
+      setProducts(productData.productlist);
+      console.log("product Data", productData.productlist);
     } catch (error) {
-      console.error(error);
       setError(error.message);
     }
   };
 
   useEffect(() => {
-    fetchData();
+    apiCalling();
   }, []);
 
   return (
     <Container>
-      {error !== "" ? (
-        <Typography variant="h2" sx={{ color: "red", textAlign: "center" }}>
+      {error ? (
+        <Typography variant="h2" sx={{ textAlign: "center", color: "red" }}>
           {error}
         </Typography>
       ) : (
         <Grid container spacing={5} sx={{ paddingTop: 10 }}>
-          {posts.slice(0,21).map((post) => (
-            <Grid item xs={12} sm={6} md={4} key={post.id}>
+          {products.map((product) => (
+            <Grid item xs={12} sm={6} md={4} key={product.id}>
               <Card
                 elevation={3}
                 sx={{
@@ -55,20 +49,35 @@ function HomeAppliances() {
                   p: 2,
                 }}
               >
+                <CardMedia
+                  component="img"
+                  sx={{ objectFit: "contain", height: "200px" }}
+                  image={`https://ecommerceserver-4zw1.onrender.com/${product.image}`}
+                  alt={product.name}
+                />
                 <Box
                   sx={{
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "space-between",
                     alignItems: "center",
-                    height: "100%",
+                    marginTop: "auto",
                   }}
                 >
-                  <Typography variant="h5" component="h2" gutterBottom>
-                    {post.title}
+                  <Typography variant="h5" component="h2">
+                    {product.name}
                   </Typography>
 
-                  <CustomButton>Read More</CustomButton>
+                  <Typography variant="h6" component="h3">
+                    ${product.price}
+                  </Typography>
+                  <CustomButton
+                    sx={{ marginTop: "auto", alignSelf: "bottom" }}
+                    component={NavLink}
+                    to={`/products/productDetails/${product.id}`}
+                  >
+                    Shop Now
+                  </CustomButton>
                 </Box>
               </Card>
             </Grid>
@@ -78,5 +87,4 @@ function HomeAppliances() {
     </Container>
   );
 }
-
 export default HomeAppliances;

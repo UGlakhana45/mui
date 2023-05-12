@@ -26,10 +26,10 @@ const Routing = () => {
             <Route index element={<ProductList />} />
             <Route path="discount" element={<Discount />} />
             <Route path="electronics" element={<Electronics />} />
+            <Route path="home&Appliances" element={<Electronics />} />
             <Route path="offers" element={<Offers />} />
             <Route path=":id" element={<ProductDetails />} />
-            <Route path=":did" element={<ProductDetails />} />
-          </Route>
+            </Route>
           <Route path="/Blogs" element={<BlogList />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/profile" element={<Profile />} />

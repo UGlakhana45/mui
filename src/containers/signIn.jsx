@@ -10,15 +10,18 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
 import { api } from "../api";
 import { useNavigate } from "react-router-dom";
 import Copyright from "../components/copyright";
 import { enqueueSnackbar } from "notistack";
+import { useDispatch } from "react-redux";
+import { saveToken } from "../redux/reducers/authSlice";
 
 const theme = createTheme();
 
 export default function SignIn() {
+  const dispatch = useDispatch();
+
   const [error, setError] = React.useState(null);
   const navigate = useNavigate();
   const handleSubmit = async (event) => {
@@ -34,7 +37,7 @@ export default function SignIn() {
     try {
       const { data } = await api.auth.login(values);
       const tokenData = JSON.stringify(data);
-      localStorage.setItem("tokenData", tokenData);
+      dispatch(saveToken(tokenData));
       // console.log(response);
       enqueueSnackbar("Login successfully", { variant: "success" });
       navigate("/");

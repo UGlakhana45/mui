@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { AxiosApi } from "../../api/axios";
 import {
   Grid,
   Card,
@@ -8,37 +7,37 @@ import {
   Container,
   Box,
 } from "@mui/material";
-
 import CustomButton from "../../components/CustomButton";
 import { NavLink } from "react-router-dom";
+import { api } from "../../api";
 
 function Discount() {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState("");
 
-  const getApiData = async () => {
+  const apiCalling = async () => {
     try {
-      const response = await AxiosApi.get("v2/beers");
-      setProducts(response.data);
+      const { data: productData } = await api.product.get();
+      setProducts(productData.productlist);
+      console.log("product Data", productData.productlist);
     } catch (error) {
-      setError(error.massage);
+      setError(error.message);
     }
   };
 
   useEffect(() => {
-    // axios library to make HTTP requests
-    getApiData();
+    apiCalling();
   }, []);
 
   return (
     <Container>
       {error ? (
-        <Typography variant="h2" sx={{ color: "red", textAlign: "center" }}>
+        <Typography variant="h2" sx={{ textAlign: "center", color: "red" }}>
           {error}
         </Typography>
       ) : (
         <Grid container spacing={5} sx={{ paddingTop: 10 }}>
-          {products.slice(0, 12).map((product) => (
+          {products.map((product) => (
             <Grid item xs={12} sm={6} md={4} key={product.id}>
               <Card
                 elevation={3}
@@ -52,7 +51,7 @@ function Discount() {
                 <CardMedia
                   component="img"
                   sx={{ objectFit: "contain", height: "200px" }}
-                  image={product.image_url}
+                  image={`https://ecommerceserver-4zw1.onrender.com/${product.image}`}
                   alt={product.name}
                 />
                 <Box
@@ -69,12 +68,12 @@ function Discount() {
                   </Typography>
 
                   <Typography variant="h6" component="h3">
-                    {product.tagline}
+                    ${product.price}
                   </Typography>
                   <CustomButton
                     sx={{ marginTop: "auto", alignSelf: "bottom" }}
                     component={NavLink}
-                    to={`${product.id}`}
+                    to={`/products/productDetails/${product.id}`}
                   >
                     Shop Now
                   </CustomButton>
@@ -87,5 +86,4 @@ function Discount() {
     </Container>
   );
 }
-
 export default Discount;

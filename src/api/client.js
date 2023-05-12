@@ -1,5 +1,4 @@
 import axios from 'axios';
-import qs from 'qs';
 import { BASE_URL } from '../utils/constants';
 
 export const METHODS = {
@@ -94,8 +93,5 @@ export function setHeaderToken(token) {
     else delete request.defaults.headers.Authorization;
 }
 
-function paramsSerializer(params) {
-    return qs.stringify(params, { arrayFormat: 'repeat' });
-}
 
 export default client;
