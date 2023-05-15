@@ -25,13 +25,11 @@ function ProductDetail() {
 
   useEffect(() => {
     getProduct();
-  }, [product]);
+  });
 
   if (!product) {
     return <div>Loading...</div>;
   }
-
-  const { title, description, image, price, category } = product;
 
   return (
     <Container sx={{ paddingTop: 10 }}>
