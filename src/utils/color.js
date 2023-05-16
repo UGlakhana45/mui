@@ -1,4 +1,3 @@
 export const color = {
-    heading : '#808080',
-    
-}
+  heading: "#808080",
+};

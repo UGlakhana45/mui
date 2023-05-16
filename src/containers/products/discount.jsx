@@ -19,7 +19,6 @@ function Discount() {
     try {
       const { data: productData } = await api.product.get();
       setProducts(productData.productlist);
-      console.log("product Data", productData.productlist);
     } catch (error) {
       setError(error.message);
     }

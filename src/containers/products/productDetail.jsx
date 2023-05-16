@@ -11,21 +11,38 @@ import {
   Button,
 } from "@mui/material";
 import { api } from "../../api";
+import { useSelector } from "react-redux";
 
 function ProductDetail() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
-  
+
+  const { user } = useSelector((state) => state.auth);
 
   const getProduct = async () => {
     const { data } = await api.product.getProductById(id);
     setProduct(data.product);
-  
+  };
+  const addToCart = async () => {
+    const values = {
+      user_id: user,
+      product_id: product.id,
+    };
+    console.log(values);
+    const data = await api.cart
+    
+      .add(values)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   useEffect(() => {
     getProduct();
-  });
+  }, [product]);
 
   if (!product) {
     return <div>Loading...</div>;
@@ -60,7 +77,7 @@ function ProductDetail() {
                 {product.desc}
               </Typography>
               <Box sx={{ marginTop: 2 }}>
-                <Button variant="contained" size="large">
+                <Button variant="contained" size="large" onClick={addToCart}>
                   Add to Cart
                 </Button>
               </Box>

@@ -16,6 +16,7 @@ import Copyright from "../components/copyright";
 import { enqueueSnackbar } from "notistack";
 import { useDispatch } from "react-redux";
 import { saveToken, saveUserId } from "../redux/reducers/authSlice";
+import { setHeaderToken } from "../api/client";
 
 const theme = createTheme();
 
@@ -39,7 +40,8 @@ export default function SignIn() {
       const tokenData = data;
       dispatch(saveToken(tokenData.token));
       dispatch(saveUserId(tokenData.user.id));
-      // console.log(response);
+      setHeaderToken(tokenData);
+      console.log(tokenData.token);
       enqueueSnackbar("Login successfully", { variant: "success" });
       navigate("/");
     } catch (error) {

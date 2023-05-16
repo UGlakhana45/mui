@@ -8,7 +8,7 @@ import {
   Box,
 } from "@mui/material";
 import CustomButton from "../../components/CustomButton";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { api } from "../../api";
 
 function ProductList() {
@@ -19,7 +19,6 @@ function ProductList() {
     try {
       const { data: productData } = await api.product.get();
       setProducts(productData.productlist);
-      console.log("product Data", productData.productlist);
     } catch (error) {
       setError(error.message);
     }

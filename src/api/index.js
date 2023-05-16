@@ -112,7 +112,7 @@ export const api = {
   cart: {
     add: (params) =>
       client({
-        url: "/cart/addToCart",
+        url: "/api/product/addtocart",
         data: params,
         method: METHODS.POST,
       }),
@@ -129,9 +129,15 @@ export const api = {
       }),
     get: (data) =>
       client({
-        url: `/cart/myCart`,
+        url: `/api/product/getcartproduct/${data}`,
         method: METHODS.GET,
         ...data,
+      }),
+    update: (data) =>
+      client({
+        url: `/api/product/updatecart/${data}`,
+        method: METHODS.PUT,
+        data: data,
       }),
   },
   restaurants: {
