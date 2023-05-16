@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 import Copyright from "../components/copyright";
 import { enqueueSnackbar } from "notistack";
 import { useDispatch } from "react-redux";
-import { saveToken } from "../redux/reducers/authSlice";
+import { saveToken, saveUserId } from "../redux/reducers/authSlice";
 
 const theme = createTheme();
 
@@ -36,8 +36,9 @@ export default function SignIn() {
     };
     try {
       const { data } = await api.auth.login(values);
-      const tokenData = JSON.stringify(data);
-      dispatch(saveToken(tokenData));
+      const tokenData = data;
+      dispatch(saveToken(tokenData.token));
+      dispatch(saveUserId(tokenData.user.id));
       // console.log(response);
       enqueueSnackbar("Login successfully", { variant: "success" });
       navigate("/");

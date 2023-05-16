@@ -13,6 +13,7 @@ import Offers from "../containers/products/offers";
 import Profile from "../containers/profile";
 import Contact from "../containers/contact";
 import ProductDetails from "../containers/products/productDetail";
+import CartPage from "../containers/cart";
 
 const Routing = () => {
   return (
@@ -29,8 +30,9 @@ const Routing = () => {
             <Route path="home&Appliances" element={<Electronics />} />
             <Route path="offers" element={<Offers />} />
             <Route path=":id" element={<ProductDetails />} />
-            </Route>
-          <Route path="/Blogs" element={<BlogList />} />
+          </Route>
+          <Route path="/cart" element={<CartPage />} />
+
           <Route path="/contact" element={<Contact />} />
           <Route path="/profile" element={<Profile />} />
         </Route>

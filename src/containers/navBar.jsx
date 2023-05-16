@@ -10,9 +10,12 @@ import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import { Link, useNavigate } from "react-router-dom";
-import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
+import { ShoppingCart } from "@mui/icons-material";
+import { Button } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { saveToken } from "../redux/reducers/authSlice";
 
 const pages = ["Products", "Contact"];
 const settings = ["profile", "Account", "Dashboard"];
@@ -20,6 +23,8 @@ const settings = ["profile", "Account", "Dashboard"];
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -39,9 +44,13 @@ function ResponsiveAppBar() {
   };
   const logOut = () => {
     handleCloseNavMenu();
-    localStorage.clear();
+dispatch(saveToken(null))
     navigate("/signin");
   };
+  const cartPage = () => {
+    navigate("/cart");
+  };
+
   return (
     <AppBar
       style={{
@@ -52,8 +61,9 @@ function ResponsiveAppBar() {
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-        
-          <ShoppingBagIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <ShoppingBagIcon
+            sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+          />
           <Typography
             variant="h6"
             noWrap
@@ -112,7 +122,9 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-          <ShoppingBagIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          <ShoppingBagIcon
+            sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
+          />
           <Typography
             variant="h5"
             noWrap
@@ -145,7 +157,9 @@ function ResponsiveAppBar() {
               </MenuItem>
             ))}
           </Box>
-
+          <Button onClick={cartPage}>
+            <ShoppingCart />
+          </Button>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

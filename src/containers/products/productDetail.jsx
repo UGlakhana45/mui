@@ -15,12 +15,12 @@ import { api } from "../../api";
 function ProductDetail() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
-  console.log(id);
+  
 
   const getProduct = async () => {
     const { data } = await api.product.getProductById(id);
     setProduct(data.product);
-    console.log(data.product);
+  
   };
 
   useEffect(() => {

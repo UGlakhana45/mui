@@ -4,10 +4,10 @@ import { Navigate, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const MainLayout = () => {
-  const {user} = useSelector((state) => state.auth)
+  const {token} = useSelector((state) => state.auth)
 
   const NavigatePerUser = () => {
-    if (user) {
+    if (token) {
       return <Outlet />;
     } else {
       return <Navigate to={"/signin"} />;

@@ -7,8 +7,9 @@ export const IMAGES = {
   eyewear: require("../../assets/images/categories/eyeWear.jpeg"),
   winterwear: require("../../assets/images/categories/winterWear.jpeg"),
   watcehs: require("../../assets/images/categories/watches.jpeg"),
-  catogory: 
+  catogory:
     "https://assets.myntassets.com/w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2023/5/8/4396ab78-e90b-4336-ac24-2f9f30ee8a5e1683531623208-Shop-By-Category.jpg",
+  iphone: require("../../assets/images/iphone14.jpeg"),
 };
 
 export const Categories = [
@@ -21,3 +22,10 @@ export const Categories = [
   { name: "Watches", image: IMAGES.watcehs },
   { name: "EyeWear", image: IMAGES.eyewear },
 ];
+
+export const cartStatic = {
+  name: "iphone 14",
+  image: IMAGES.iphone,
+  price: "₹79000",
+  desc: "iphone 14 blue/256gb",
+};
