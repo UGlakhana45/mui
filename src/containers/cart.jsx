@@ -85,6 +85,17 @@ const CartPage = () => {
         </>
       ) : (
         <Container>
+          <Typography
+            sx={{
+              textAlign: "center",
+              m: 3,
+              fontSize: "24px",
+              fontWeight: 600,
+            }}
+          >
+            My Cart
+          </Typography>
+
           <Box
             sx={{
               display: "flex",
