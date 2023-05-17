@@ -119,13 +119,13 @@ const Profile = () => {
 
   return (
     <Container style={{ marginTop: "1rem" }}>
-      <Paper style={{ padding: "1rem" }}>
+      <Paper style={profileContainerStyle}>
         <Avatar
           alt="User Avatar"
           src="https://picsum.photos/150"
-          style={{ width: "150px", height: "150px" }}
+          style={avatarStyle}
         />
-        <div style={{ marginLeft: "1rem" }}>
+        <div style={userInfoStyle}>
           <Typography variant="h5">
             {data.userdata.firstName} {data.userdata.lastName}
           </Typography>
@@ -139,10 +139,79 @@ const Profile = () => {
           </Button>
         </div>
       </Paper>
-      <Paper style={{ marginTop: "1rem", padding: "1rem" }}>
-        <Typography variant="h6" style={{ marginBottom: "1rem" }}>
+      <Paper style={ordersContainerStyle}>
+        <Typography variant="h6" style={orderHeaderStyle}>
           Recent Orders
         </Typography>
+        <List>
+          <ListItem style={orderItemStyle}>
+            <ListItemText
+              primary="Product 1"
+              secondary="$10"
+              style={orderItemNameStyle}
+            />
+            <IconButton color="secondary" aria-label="Delete">
+              <Delete />
+            </IconButton>
+          </ListItem>
+          <ListItem style={orderItemStyle}>
+            <ListItemText
+              primary="Product 2"
+              secondary="$20"
+              style={orderItemNameStyle}
+            />
+            <IconButton color="secondary" aria-label="Delete">
+              <Delete />
+            </IconButton>
+          </ListItem>
+          <ListItem style={orderItemStyle}>
+            <ListItemText
+              primary="Product 3"
+              secondary="$15"
+              style={orderItemNameStyle}
+            />
+            <IconButton color="secondary" aria-label="Delete">
+              <Delete />
+            </IconButton>
+          </ListItem>
+        </List>
+      </Paper>
+      <Paper style={favoritesContainerStyle}>
+        <Typography variant="h6" style={favoritesHeaderStyle}>
+          Favorite Products
+        </Typography>
+        <List>
+          <ListItem style={favoriteItemStyle}>
+            <ListItemText
+              primary="Product 1"
+              secondary="$10"
+              style={favoriteItemNameStyle}
+            />
+            <IconButton color="primary" aria-label="Favorite">
+              <FavoriteBorder />
+            </IconButton>
+          </ListItem>
+          <ListItem style={favoriteItemStyle}>
+            <ListItemText
+              primary="Product 2"
+              secondary="$20"
+              style={favoriteItemNameStyle}
+            />
+            <IconButton color="primary" aria-label="Favorite">
+              <FavoriteBorder />
+            </IconButton>
+          </ListItem>
+          <ListItem style={favoriteItemStyle}>
+            <ListItemText
+              primary="Product 3"
+              secondary="$15"
+              style={favoriteItemNameStyle}
+            />
+            <IconButton color="primary" aria-label="Favorite">
+              <FavoriteBorder />
+            </IconButton>
+          </ListItem>
+        </List>
       </Paper>
     </Container>
   );

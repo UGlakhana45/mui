@@ -15,13 +15,7 @@ const Home = () => {
         alt="Shop By catogory"
       />
       <CategoryGrid />
-      <Link to="/products/discount">
-        <img
-          src={discount}
-          style={{ width: "100%", height: "500px" }}
-          alt="Beer Discount \n must have Offer"
-        />
-      </Link>
+      <Link to="/products/discount"></Link>
       <Contact />
     </>
   );

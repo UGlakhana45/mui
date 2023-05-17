@@ -9,22 +9,21 @@ import {
 import { styled } from "@mui/material/styles";
 
 const ContactCard = styled(Card)({
-  maxWidth: 800, // doubled the width
+  maxWidth: 600, // doubled the width
   width: "100%",
-  alignItems: "center",
-  justifyContent: "center",
+
   margin: "0 auto",
   backgroundColor: "#f9f9f9",
   boxShadow: "0px 3px 10px rgba(0,0,0,0.3)", // added a box shadow
   borderRadius: 16, // rounded corners
-  padding: 32, // increased padding
+  padding: 20, // increased padding
 });
 
 const ContactHeader = styled(CardHeader)({
   textAlign: "center",
   marginBottom: 16, // added some bottom margin
   textDecoration: "underline", // added an underline
-  fontSize:24,
+  fontSize: { xs: 12, md: 18, lg: 24 },
 });
 
 const ContactDetails = styled(CardContent)({
@@ -34,10 +33,10 @@ const ContactDetails = styled(CardContent)({
 
 const ContactItem = styled(Typography)({
   display: "flex",
-  alignItems: "center",
+
   margin: "16px 0", // increased margin
-  alignSelf: "center",
-  fontSize: 24,
+
+  fontSize: { xs: 12, md: 18, lg: 24 },
 });
 
 const ContactIcon = styled("span")({
@@ -48,7 +47,7 @@ function ContactPage() {
   return (
     <ContactCard>
       <ContactHeader title="Contact Me" />
-      <Divider sx={{color:'brown', margin:5}} />
+      <Divider sx={{ color: "brown", margin: 5 }} />
       <ContactDetails>
         <ContactItem>
           <ContactIcon>

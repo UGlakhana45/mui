@@ -15,7 +15,7 @@ const Contact = () => {
         sx={{
           flexDirection: { xs: "column", md: "row" },
           alignItems: { xs: "center", md: "stretch" },
-          height: { xs: "auto", md: "auto", xl: "100vh" },
+          height: { xs: "auto", md: "100vh", xl: "100vh" },
           display: "flex",
           justifyContent: "center",
           backgroundSize: "cover",
@@ -36,7 +36,6 @@ const Contact = () => {
           <ContactPage />
         </Box>
       </ContactBox>
-      <Copyright />
     </>
   );
 };
