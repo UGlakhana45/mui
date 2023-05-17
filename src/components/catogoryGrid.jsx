@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, Grid, Paper } from "@mui/material";
+import { Box, Grid, Paper } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { css } from "@emotion/react";
 import { Categories } from "../utils/commonImages/catogoryImages";

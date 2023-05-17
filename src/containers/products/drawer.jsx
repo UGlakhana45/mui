@@ -5,15 +5,11 @@ import MuiDrawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import { useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
-import { Discount } from "@mui/icons-material";
 import images from "../../utils/icons";
 
 const drawerWidth = 240;
@@ -74,10 +70,6 @@ export default function MiniDrawer() {
     setOpen(matchesUpMd);
   }, [matchesUpMd]);
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -111,6 +103,7 @@ export default function MiniDrawer() {
                   <img
                     src={text.image}
                     style={{ width: "30px", height: "30px" }}
+                    alt={text.name}
                   />
                 )}
               </ListItemButton>

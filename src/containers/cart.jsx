@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   Card,
   CardMedia,
@@ -7,7 +7,6 @@ import {
   Button,
   Container,
   TextField,
-  Input,
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCartData } from "../redux/reducers/cartSlice";
@@ -20,7 +19,6 @@ const CartPage = () => {
   const { user } = useSelector((state) => state.auth);
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   console.log("cart:", cart);
 
@@ -77,9 +75,6 @@ const CartPage = () => {
       await api.cart.update(data);
       dispatch(fetchCartData(user));
     }
-  };
-  const shopping = () => {
-    navigate("/products");
   };
 
   return (

@@ -1,5 +1,4 @@
 import React from "react";
-import discount from "../assets/images/beerDiscount.png";
 import Contact from "./contact";
 import ImageSwiper from "../components/swiper/swiper1";
 import CategoryGrid from "../components/catogoryGrid";
@@ -22,7 +21,3 @@ const Home = () => {
 };
 
 export default Home;
-
-// <ImageSwiper />
-//          <Box component="img" src={discount} sx={{ width: "100%" }} mb={"-4px"}></Box>
-//        <Contact />

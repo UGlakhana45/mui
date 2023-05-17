@@ -2,7 +2,6 @@ import { Box } from "@mui/material";
 import React from "react";
 import styled from "@emotion/styled";
 import ContactPage from "../components/contactCard";
-import Copyright from "../components/copyright";
 
 const ContactBox = styled(Box)`
   background: linear-gradient(to bottom, #cc2b5e, #753a88);
