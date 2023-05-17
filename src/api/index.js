@@ -15,6 +15,14 @@ export const api = {
         method: METHODS.POST,
       }),
   },
+  profile: {
+    get: (params) =>
+      client({
+        url: "/api/customer/profile",
+        data: params,
+        method: METHODS.GET,
+      }),
+  },
   category: {
     get: () =>
       client({
@@ -135,8 +143,14 @@ export const api = {
       }),
     update: (data) =>
       client({
-        url: `/api/product/updatecart/${data}`,
+        url: `/api/product/updatecart/${data.id}`,
         method: METHODS.PUT,
+        data: data,
+      }),
+    remove: (data) =>
+      client({
+        url: `/api/product/removefromcart/${data.user_id}/${data.product_id}`,
+        method: METHODS.DELETE,
         data: data,
       }),
   },

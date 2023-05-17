@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import { api } from "../../api";
 import { useSelector } from "react-redux";
+import { enqueueSnackbar } from "notistack";
 
 function ProductDetail() {
   const { id } = useParams();
@@ -21,6 +22,7 @@ function ProductDetail() {
 
   const getProduct = async () => {
     const { data } = await api.product.getProductById(id);
+    console.log("data", data);
     setProduct(data.product);
   };
   const addToCart = async () => {
@@ -28,12 +30,12 @@ function ProductDetail() {
       user_id: user,
       product_id: product.id,
     };
-    console.log(values);
+
     const data = await api.cart
-    
       .add(values)
       .then((data) => {
         console.log(data);
+        enqueueSnackbar(data.data.message, { variant: "success" });
       })
       .catch((error) => {
         console.log(error);
@@ -42,7 +44,7 @@ function ProductDetail() {
 
   useEffect(() => {
     getProduct();
-  }, [product]);
+  }, []);
 
   if (!product) {
     return <div>Loading...</div>;

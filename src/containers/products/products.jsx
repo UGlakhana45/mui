@@ -18,6 +18,7 @@ function ProductList() {
   const apiCalling = async () => {
     try {
       const { data: productData } = await api.product.get();
+      console.log(productData);
       setProducts(productData.productlist);
     } catch (error) {
       setError(error.message);

@@ -50,11 +50,11 @@ export default function ImageSwiper() {
         className="mySwiper"
       >
         {SwipableImages.map((image, index) => (
-          <SwiperSlide>
+          <SwiperSlide key={index}>
             <img
               src={image.imgPath}
               alt="Image"
-              style={{ width:"100%", maxHeight:"600px", objectFit:"cover" }}
+              style={{ width: "100%", maxHeight: "600px", objectFit: "cover" }}
             />
           </SwiperSlide>
         ))}

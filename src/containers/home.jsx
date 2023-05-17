@@ -9,10 +9,18 @@ const Home = () => {
   return (
     <>
       <ImageSwiper />
-      <img src={IMAGES.catogory} style={{ width: "100%" }} alt="Shop By catogory" />
+      <img
+        src={IMAGES.catogory}
+        style={{ objectFit: "contain", height: "150px", width: "100%" }}
+        alt="Shop By catogory"
+      />
       <CategoryGrid />
       <Link to="/products/discount">
-        <img src={discount} style={{width:'100%',height:"500px"}}  alt="Beer Discount \n must have Offer"/>
+        <img
+          src={discount}
+          style={{ width: "100%", height: "500px" }}
+          alt="Beer Discount \n must have Offer"
+        />
       </Link>
       <Contact />
     </>

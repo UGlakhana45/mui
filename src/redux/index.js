@@ -1,13 +1,12 @@
-import {configureStore} from '@reduxjs/toolkit';
-import {persistReducer, persistStore} from 'redux-persist';
-import { reducers } from './reducers';
-import storage from 'redux-persist/lib/storage';
-
+import { configureStore } from "@reduxjs/toolkit";
+import { persistReducer, persistStore } from "redux-persist";
+import { reducers } from "./reducers";
+import storage from "redux-persist/lib/storage";
 
 const persistConfig = {
-  key: 'root',
-  storage:storage,
-  whitelist: ['auth','cart'],
+  key: "root",
+  storage: storage,
+  whitelist: ["auth", "cart", "profile"],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);

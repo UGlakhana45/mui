@@ -13,7 +13,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { Link, useNavigate } from "react-router-dom";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import { ShoppingCart } from "@mui/icons-material";
-import { Button } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { saveToken } from "../redux/reducers/authSlice";
 
@@ -44,11 +44,11 @@ function ResponsiveAppBar() {
   };
   const logOut = () => {
     handleCloseNavMenu();
-dispatch(saveToken(null))
+    dispatch(saveToken(null));
     navigate("/signin");
   };
   const cartPage = () => {
-    navigate("/cart");
+    navigate("/products/cart");
   };
 
   return (
@@ -62,7 +62,10 @@ dispatch(saveToken(null))
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <ShoppingBagIcon
-            sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+            sx={{
+              display: { xs: "none", md: "flex" },
+              mr: 1,
+            }}
           />
           <Typography
             variant="h6"
@@ -123,7 +126,7 @@ dispatch(saveToken(null))
             </Menu>
           </Box>
           <ShoppingBagIcon
-            sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
+            sx={{ display: { xs: "flex", md: "none" }, mr: 1, width: "20px" }}
           />
           <Typography
             variant="h5"
@@ -136,9 +139,10 @@ dispatch(saveToken(null))
               flexGrow: 1,
               fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: ".3rem",
+              letterSpacing: ".1rem",
               color: "inherit",
               textDecoration: "none",
+              fontSize: "14px",
             }}
           >
             eCommerce
@@ -163,7 +167,7 @@ dispatch(saveToken(null))
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar src="/broken-image.jpg" />
               </IconButton>
             </Tooltip>
             <Menu

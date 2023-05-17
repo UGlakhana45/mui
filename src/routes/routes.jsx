@@ -10,10 +10,10 @@ import ProductList from "../containers/products/products";
 import AllProducts from "../layouts/allProducts";
 import Electronics from "../containers/products/electronics";
 import Offers from "../containers/products/offers";
-import Profile from "../containers/profile";
 import Contact from "../containers/contact";
 import ProductDetails from "../containers/products/productDetail";
 import CartPage from "../containers/cart";
+import Profile from "../containers/profile";
 
 const Routing = () => {
   return (
@@ -30,9 +30,8 @@ const Routing = () => {
             <Route path="home&Appliances" element={<Electronics />} />
             <Route path="offers" element={<Offers />} />
             <Route path=":id" element={<ProductDetails />} />
+            <Route path="cart" element={<CartPage />} />
           </Route>
-          <Route path="/cart" element={<CartPage />} />
-
           <Route path="/contact" element={<Contact />} />
           <Route path="/profile" element={<Profile />} />
         </Route>
