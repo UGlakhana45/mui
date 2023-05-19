@@ -34,6 +34,7 @@ const CartPage = () => {
       product_id: product_id,
       user_id: user,
     };
+    console.log(data);
     await api.cart.remove(data);
     dispatch(fetchCartData(user));
   };
