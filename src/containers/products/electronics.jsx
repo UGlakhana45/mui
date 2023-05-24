@@ -10,19 +10,21 @@ import {
 import CustomButton from "../../components/CustomButton";
 import { NavLink } from "react-router-dom";
 import { api } from "../../api";
+import { BASE_URL } from "../../utils/constants";
 
 function Electronics() {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState("");
 
   const apiCalling = async () => {
-    try {
-      const { data: productData } = await api.product.get();
-      setProducts(productData.productlist);
-      console.log("product Data", productData.productlist);
-    } catch (error) {
-      setError(error.message);
-    }
+    let data = "Electronics";
+    await api.category
+      .get(data)
+      .then((e) => {
+        console.log(e);
+        setProducts(e.data.data);
+      })
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {
@@ -51,7 +53,7 @@ function Electronics() {
                 <CardMedia
                   component="img"
                   sx={{ objectFit: "contain", height: "200px" }}
-                  image={`https://ecommerceserver-4zw1.onrender.com/${product.image}`}
+                  image={`${BASE_URL}/${product.image}`}
                   alt={product.name}
                 />
                 <Box

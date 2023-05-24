@@ -17,19 +17,19 @@ function HomeAppliances() {
   const [error, setError] = useState("");
 
   const apiCalling = async () => {
-    try {
-      const { data: productData } = await api.product.get();
-      setProducts(productData.productlist);
-      console.log("product Data", productData.productlist);
-    } catch (error) {
-      setError(error.message);
-    }
+    let data = "Electronics";
+    await api.category
+      .get(data)
+      .then((e) => {
+        console.log(e);
+        setProducts(e.data.data);
+      })
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {
     apiCalling();
   }, []);
-
   return (
     <Container>
       {error ? (

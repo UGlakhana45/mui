@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardMedia,
@@ -14,16 +14,17 @@ import { Add, Remove } from "@mui/icons-material";
 import { api } from "../api";
 import { useNavigate } from "react-router-dom";
 import EmptyCart from "../components/emptyCart";
+import { BASE_URL } from "../utils/constants";
 
 const CartPage = () => {
+  const [Total, setTotal] = useState();
   const { user } = useSelector((state) => state.auth);
+  console.log("user", user);
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-
-  console.log("cart:", cart);
-
+  console.log("cart:", cart.data.data);
   const fetchDynamicProducts = () => {
-    dispatch(fetchCartData(user));
+    dispatch(fetchCartData());
   };
   useEffect(() => {
     fetchDynamicProducts();
@@ -32,18 +33,18 @@ const CartPage = () => {
   const removeItem = async (product_id) => {
     const data = {
       product_id: product_id,
-      user_id: user,
     };
     console.log(data);
-    await api.cart.remove(data);
+    await api.cart.remove(data.product_id);
     dispatch(fetchCartData(user));
   };
 
   const calculateSubtotal = () => {
     let subtotal = 0;
-    cart?.usercart?.forEach((product) => {
-      subtotal += product.Product.price * product.qty;
+    cart?.data?.data?.forEach((product) => {
+      subtotal += product?.product_id?.price * product?.qty;
     });
+
     return subtotal;
   };
 
@@ -80,7 +81,7 @@ const CartPage = () => {
 
   return (
     <div>
-      {cart?.usercart?.length === 0 ? (
+      {cart?.data?.data?.length === 0 ? (
         <>
           <EmptyCart />
         </>
@@ -112,7 +113,7 @@ const CartPage = () => {
           >
             <Box sx={{ width: "100%" }}>
               {/* Dynamic Products */}
-              {cart?.usercart?.map((product) => (
+              {cart?.data?.data?.map((product) => (
                 <Card
                   key={product.id}
                   elevation={6}
@@ -125,7 +126,7 @@ const CartPage = () => {
                       lg: "row",
                       xl: "row",
                     },
-                    borderRadius: 5,
+                    borderRadius: 1,
                     p: 2,
                     m: 2,
                   }}
@@ -137,8 +138,8 @@ const CartPage = () => {
                       height: "150px",
                       width: "100%",
                     }}
-                    image={`https://ecommerceserver-4zw1.onrender.com/${product.Product.image}`}
-                    alt={product.Product.name}
+                    image={`${BASE_URL}/${product?.product_id?.image}`}
+                    alt={product?.product_id?.name}
                   />
                   <Box
                     sx={{
@@ -148,10 +149,10 @@ const CartPage = () => {
                       gap: 0.5,
                     }}
                   >
-                    <Typography>{product.Product.name}</Typography>
-                    <Typography sx={{ textAlign: "center", maxWidth: "150px" }}>
-                      {product.Product.desc}
-                    </Typography>
+                    <Typography>{product?.product_id?.name}</Typography>
+                    {/* <Typography sx={{ textAlign: "center", maxWidth: "150px" }}>
+                      {product.product_id.desc}
+                    </Typography> */}
                     <Typography
                       style={{
                         display: "flex",
@@ -161,22 +162,22 @@ const CartPage = () => {
                       }}
                     >
                       <Button
-                        onClick={() => decrementQty(product.id, product.qty)}
+                        onClick={() => decrementQty(product._id, product.qty)}
                       >
                         <Remove />
                       </Button>
                       Qty:{product.qty}
                       <Button
-                        onClick={() => incrementQty(product.id, product.qty)}
+                        onClick={() => incrementQty(product._id, product.qty)}
                       >
                         <Add />
                       </Button>
                     </Typography>
 
-                    <Typography>${product.Product.price}</Typography>
+                    <Typography>${product?.product_id?.price}</Typography>
                     <Button
                       title="remove"
-                      onClick={() => removeItem(product.product_id)}
+                      onClick={() => removeItem(product.product_id._id)}
                       sx={{ backgroundColor: "#FF0000", color: "black" }}
                     >
                       remove
@@ -188,6 +189,7 @@ const CartPage = () => {
             <Box sx={{ width: "100%" }}>
               {/* Subtotal and Checkout */}
               <Card
+                elevation={6}
                 sx={{
                   padding: "1rem",
                   display: "flex",
@@ -219,8 +221,8 @@ const CartPage = () => {
                       justifyContent: "space-between",
                     }}
                   >
-                    <Typography>Shopping Cost</Typography>
-                    <Typography>TBD</Typography>
+                    <Typography>Estimated Total</Typography>
+                    <Typography>${calculateSubtotal()}</Typography>
                   </Box>
                   <Box
                     sx={{
@@ -228,17 +230,8 @@ const CartPage = () => {
                       justifyContent: "space-between",
                     }}
                   >
-                    <Typography>Discount</Typography>
-                    <Typography>$ 0</Typography>
-                  </Box>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <Typography>Tax</Typography>
-                    <Typography>TBD</Typography>
+                    <Typography>Shipping Charge</Typography>
+                    <Typography>$ 100</Typography>
                   </Box>
                 </Box>
                 <Box
@@ -247,8 +240,10 @@ const CartPage = () => {
                     justifyContent: "space-between",
                   }}
                 >
-                  <Typography gutterBottom>Estimated Total:</Typography>
-                  <Typography gutterBottom>${calculateSubtotal()}</Typography>
+                  <Typography gutterBottom>SubTotal:</Typography>
+                  <Typography gutterBottom>
+                    ${calculateSubtotal() + 100}
+                  </Typography>
                 </Box>
                 <Button
                   variant="contained"

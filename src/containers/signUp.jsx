@@ -35,7 +35,7 @@ export default function SignUp() {
     const lastName = userData.get("lastName");
     const email = userData.get("email");
     const password = userData.get("password");
-    
+
     if (!firstName) {
       setFirstNameError("First Name is required.");
     } else {
@@ -71,12 +71,12 @@ export default function SignUp() {
 
       try {
         const response = await api.auth.register(values);
-        console.log(response.data);
+        console.log(response);
         enqueueSnackbar("Registeration successfull", { variant: "success" });
         navigate("/signin");
       } catch (error) {
         console.log(error);
-        setEmailError("email is alredy registered");
+        setEmailError(error.message);
       }
     }
   };

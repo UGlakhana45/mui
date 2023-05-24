@@ -11,27 +11,24 @@ import {
   Button,
 } from "@mui/material";
 import { api } from "../../api";
-import { useSelector } from "react-redux";
 import { enqueueSnackbar } from "notistack";
+import { BASE_URL } from "../../utils/constants";
 
 function ProductDetail() {
   const { id } = useParams();
+  console.log("produt_id:", id);
   const [product, setProduct] = useState(null);
-
-  const { user } = useSelector((state) => state.auth);
 
   const getProduct = async () => {
     const { data } = await api.product.getProductById(id);
-    console.log("data", data);
-    setProduct(data.product);
+    console.log("product", data);
+    setProduct(data?.data?.Product);
   };
   const addToCart = async () => {
     const values = {
-      user_id: user,
-      product_id: product.id,
+      product_id: id,
     };
-
-    const data = await api.cart
+    await api.cart
       .add(values)
       .then((data) => {
         console.log(data);
@@ -57,7 +54,7 @@ function ProductDetail() {
           <Card>
             <CardMedia
               component={"img"}
-              image={`https://ecommerceserver-4zw1.onrender.com/${product.image}`}
+              image={`${BASE_URL}/${product.image}`}
               alt={product.name}
               sx={{ maxHeight: 500, objectFit: "contain", padding: "15px" }}
             />
@@ -79,7 +76,11 @@ function ProductDetail() {
                 {product.desc}
               </Typography>
               <Box sx={{ marginTop: 2 }}>
-                <Button variant="contained" size="large" onClick={addToCart}>
+                <Button
+                  variant="contained"
+                  size="large"
+                  onClick={() => addToCart()}
+                >
                   Add to Cart
                 </Button>
               </Box>

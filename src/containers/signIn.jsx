@@ -36,17 +36,19 @@ export default function SignIn() {
       password: password,
     };
     try {
-      const { data } = await api.auth.login(values);
-      const tokenData = data;
-      dispatch(saveToken(tokenData.token));
-      dispatch(saveUserId(tokenData.user.id));
+      const response = await api.auth.login(values);
+      console.log(response);
+      const tokenData = response.data.data.token;
+      const userId = response.data.data.user._id;
+      dispatch(saveToken(tokenData));
+      dispatch(saveUserId(userId));
       setHeaderToken(tokenData);
-      console.log(tokenData.token);
+      console.log(tokenData);
       enqueueSnackbar("Login successfully", { variant: "success" });
       navigate("/");
     } catch (error) {
-      console.log(error.message);
-      setError(error.message.fail);
+      console.log(error);
+      setError(error.message.message);
     }
   };
 

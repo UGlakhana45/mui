@@ -4,13 +4,13 @@ export const api = {
   auth: {
     login: (params) =>
       client({
-        url: "/api/customer/signin",
+        url: "/api/user/signin",
         data: params,
         method: METHODS.POST,
       }),
     register: (params) =>
       client({
-        url: "/api/customer/signup",
+        url: "/api/user/signup",
         data: params,
         method: METHODS.POST,
       }),
@@ -18,22 +18,22 @@ export const api = {
   profile: {
     get: (params) =>
       client({
-        url: "/api/customer/profile",
+        url: "/api/user/profile",
         data: params,
         method: METHODS.GET,
       }),
   },
   category: {
-    get: () =>
+    get: (data) =>
       client({
-        url: "/category",
+        url: `/api/product/getbycategory/${data}`,
         method: METHODS.GET,
       }),
   },
   product: {
     get: (data) =>
       client({
-        url: "/api/product/get_all_product",
+        url: `/api/product/searchproduct?q=${data}`,
         method: METHODS.GET,
         ...data,
       }),
@@ -73,73 +73,25 @@ export const api = {
         method: METHODS.POST,
       }),
   },
-  category: {
-    get: () =>
-      client({
-        url: "/category",
-        method: METHODS.GET,
-      }),
-    post: (params) =>
-      client({
-        url: "/category",
-        data: params,
-        method: METHODS.POST,
-      }),
-    delete: (params) =>
-      client({
-        url: `/category/${params}`,
-        method: METHODS.DELETE,
-      }),
-  },
-  foodCategory: {
-    get: () =>
-      client({
-        url: "/food/category",
-        method: METHODS.GET,
-      }),
-    post: (params) =>
-      client({
-        url: "/category",
-        data: params,
-        method: METHODS.POST,
-      }),
-    delete: (params) =>
-      client({
-        url: `/category/${params}`,
-        method: METHODS.DELETE,
-      }),
-  },
-  foodItem: {
-    get: (data) =>
-      client({
-        url: "/food/item",
-        method: METHODS.GET,
-        ...data,
-      }),
-  },
+
   cart: {
-    add: (params) =>
+    add: (data) =>
       client({
         url: "/api/product/addtocart",
-        data: params,
+        data: data,
         method: METHODS.POST,
       }),
-    remove: (params) =>
-      client({
-        url: `/cart/removeCart/${params?.product_id}`,
-        method: METHODS.DELETE,
-      }),
+
     removeMulti: (data) =>
       client({
         url: `/cart/removemulti`,
         method: METHODS.POST,
         ...data,
       }),
-    get: (data) =>
+    get: () =>
       client({
-        url: `/api/product/getcartproduct/${data}`,
+        url: "/api/product/getusercart",
         method: METHODS.GET,
-        ...data,
       }),
     update: (data) =>
       client({
@@ -149,85 +101,12 @@ export const api = {
       }),
     remove: (data) =>
       client({
-        url: `/api/product/removefromcart/${data.user_id}/${data.product_id}`,
+        url: `/api/product/removefromcart/${data}`,
         method: METHODS.DELETE,
         data: data,
       }),
   },
-  restaurants: {
-    get: () =>
-      client({
-        url: "/restaurants",
-        method: METHODS.GET,
-      }),
-    post: (params) =>
-      client({
-        url: "/restaurants",
-        data: params,
-        method: METHODS.POST,
-      }),
-    patch: ({ _id, ...params }) =>
-      client({
-        url: `/restaurants/${_id}`,
-        data: params,
-        method: METHODS.PATCH,
-      }),
-    delete: (params) =>
-      client({
-        url: `/restaurants/${params}`,
-        method: METHODS.DELETE,
-      }),
-  },
-  foodItem: {
-    get: (id) =>
-      client({
-        url: `food/item/${id}`,
-        method: METHODS.GET,
-      }),
-    getAll: (data) =>
-      client({
-        url: `food/item`,
-        method: METHODS.GET,
-        ...data,
-      }),
-    post: (params) =>
-      client({
-        url: "/food/item",
-        data: params,
-        method: METHODS.POST,
-      }),
-  },
-  foodCategory: {
-    get: () =>
-      client({
-        url: "/food/category",
-        method: METHODS.GET,
-      }),
-    post: (params) =>
-      client({
-        url: "/food/category",
-        data: params,
-        method: METHODS.POST,
-      }),
-    delete: (params) =>
-      client({
-        url: `/food/category/${params}`,
-        method: METHODS.DELETE,
-      }),
-  },
-  order: {
-    get: () =>
-      client({
-        url: `/order/getMyOrder`,
-        method: METHODS.GET,
-      }),
-    changeStatus: ({ _id, ...params }) =>
-      client({
-        url: `/order/updateStatus/${_id}`,
-        data: params,
-        method: METHODS.POST,
-      }),
-  },
+
   checkout: {
     create: (params) =>
       client({

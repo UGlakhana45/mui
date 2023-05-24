@@ -15,7 +15,7 @@ import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import { ShoppingCart } from "@mui/icons-material";
 import { Button, TextField } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { saveToken } from "../redux/reducers/authSlice";
+import { saveToken, saveUserId } from "../redux/reducers/authSlice";
 
 const pages = ["Products", "Contact"];
 const settings = ["profile", "Account", "Dashboard"];
@@ -45,6 +45,7 @@ function ResponsiveAppBar() {
   const logOut = () => {
     handleCloseNavMenu();
     dispatch(saveToken(null));
+    dispatch(saveUserId(null));
     navigate("/signin");
   };
   const cartPage = () => {

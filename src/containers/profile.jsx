@@ -127,9 +127,9 @@ const Profile = () => {
         />
         <div style={userInfoStyle}>
           <Typography variant="h5">
-            {data.userdata.firstName} {data.userdata.lastName}
+            {data.data.firstName} {data.data.lastName}
           </Typography>
-          <Typography variant="body1">{data.userdata.email}</Typography>
+          <Typography variant="body1">{data.data.email}</Typography>
           <Button
             variant="contained"
             color="primary"

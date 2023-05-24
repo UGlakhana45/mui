@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   user: null,
-  token:null,
+  token: null,
 };
 
 export const authSlice = createSlice({
@@ -12,13 +12,13 @@ export const authSlice = createSlice({
     saveToken: (state, action) => {
       state.token = action.payload;
     },
-    saveUserId : (state,action) => {
+    saveUserId: (state, action) => {
       state.user = action.payload;
-    }
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { saveToken,saveUserId } = authSlice.actions;
+export const { saveToken, saveUserId } = authSlice.actions;
 
 export default authSlice.reducer;

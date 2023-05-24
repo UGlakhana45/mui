@@ -10,6 +10,7 @@ import {
 import CustomButton from "../../components/CustomButton";
 import { Link } from "react-router-dom";
 import { api } from "../../api";
+import { BASE_URL } from "../../utils/constants";
 
 function ProductList() {
   const [products, setProducts] = useState([]);
@@ -17,11 +18,12 @@ function ProductList() {
 
   const apiCalling = async () => {
     try {
-      const { data: productData } = await api.product.get();
-      console.log(productData);
-      setProducts(productData.productlist);
+      let data = "";
+      const response = await api.product.get(data);
+      console.log(response);
+      setProducts(response.data.data.product);
     } catch (error) {
-      setError(error.message);
+      setError(error.message.message);
     }
   };
 
@@ -51,7 +53,7 @@ function ProductList() {
                 <CardMedia
                   component="img"
                   sx={{ objectFit: "contain", height: "200px" }}
-                  image={`https://ecommerceserver-4zw1.onrender.com/${product.image}`}
+                  image={`${BASE_URL}/${product.image}`}
                   alt={product.name}
                 />
                 <Box
@@ -73,7 +75,7 @@ function ProductList() {
                   <CustomButton
                     sx={{ marginTop: "auto", alignSelf: "bottom" }}
                     component={Link}
-                    to={`${product.id}`}
+                    to={`${product._id}`}
                   >
                     Shop Now
                   </CustomButton>
