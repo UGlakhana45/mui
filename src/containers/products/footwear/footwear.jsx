@@ -7,21 +7,21 @@ import {
   Container,
   Box,
 } from "@mui/material";
-import CustomButton from "../../components/CustomButton";
+import CustomButton from "../../../components/CustomButton";
+import { api } from "../../../api";
+import { BASE_URL } from "../../../utils/constants";
 import { Link } from "react-router-dom";
-import { api } from "../../api";
-import { BASE_URL } from "../../utils/constants";
 
-function ProductList() {
+function Footwear() {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState("");
 
   const apiCalling = async () => {
     try {
-      let data = "";
-      const response = await api.product.get(data);
+      let data = "Footwear";
+      const response = await api.category.get(data);
       console.log(response);
-      setProducts(response.data.data.product);
+      setProducts(response.data.data);
     } catch (error) {
       setError(error.message.message);
     }
@@ -75,7 +75,7 @@ function ProductList() {
                   <CustomButton
                     sx={{ marginTop: "auto", alignSelf: "bottom" }}
                     component={Link}
-                    to={`${product._id}`}
+                    to={`/products/${product._id}`}
                   >
                     Shop Now
                   </CustomButton>
@@ -88,4 +88,4 @@ function ProductList() {
     </Container>
   );
 }
-export default ProductList;
+export default Footwear;

@@ -16,10 +16,9 @@ export const api = {
       }),
   },
   profile: {
-    get: (params) =>
+    get: () =>
       client({
         url: "/api/user/profile",
-        data: params,
         method: METHODS.GET,
       }),
   },

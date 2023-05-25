@@ -1,5 +1,5 @@
 import React from "react";
-import PermanentDrawerLeft from "../containers/products/drawer";
+import PermanentDrawerLeft from "../components/drawer";
 import { Outlet } from "react-router-dom";
 import { Box } from "@mui/material";
 

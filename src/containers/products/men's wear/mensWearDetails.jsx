@@ -10,23 +10,23 @@ import {
   Box,
   Button,
 } from "@mui/material";
-import { api } from "../../api";
+import { api } from "../../../api";
 import { enqueueSnackbar } from "notistack";
-import { BASE_URL } from "../../utils/constants";
+import { BASE_URL } from "../../../utils/constants";
 
-function ProductDetail() {
-  const { id } = useParams();
-  console.log("produt_id:", id);
+function MensWearProductDetail() {
+  const { mensWear } = useParams();
+  console.log("EleProdut_id:", mensWear);
   const [product, setProduct] = useState(null);
 
   const getProduct = async () => {
-    const { data } = await api.product.getProductById(id);
+    const { data } = await api.product.getProductById(mensWear);
     console.log("product", data);
     setProduct(data?.data?.Product);
   };
   const addToCart = async () => {
     const values = {
-      product_id: id,
+      product_id: mensWear,
     };
     await api.cart
       .add(values)
@@ -92,4 +92,4 @@ function ProductDetail() {
   );
 }
 
-export default ProductDetail;
+export default MensWearProductDetail;

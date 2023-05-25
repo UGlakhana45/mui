@@ -10,7 +10,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import { useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
-import images from "../../utils/icons";
+import images from "../utils/icons";
 
 const drawerWidth = 240;
 
@@ -79,9 +79,12 @@ export default function MiniDrawer() {
 
         <List>
           {[
-            { name: "Discount", image: images.discount },
+            { name: "Women'swear", image: images.discount },
             { name: "Electronics", image: images.electronics },
-            { name: "Home&Appliances", image: images.homeAppliances },
+            { name: "Cosmetics", image: images.homeAppliances },
+            { name: "Footwear", image: images.homeAppliances },
+            { name: "kidsWear", image: images.homeAppliances },
+            { name: "mensWear", image: images.homeAppliances },
           ].map((text, index) => (
             <ListItem
               component={Link}
@@ -106,22 +109,6 @@ export default function MiniDrawer() {
                     alt={text.name}
                   />
                 )}
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {["Catogory", "Offers", "New arrivals"].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
-              >
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
           ))}

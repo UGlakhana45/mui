@@ -7,24 +7,24 @@ import {
   Container,
   Box,
 } from "@mui/material";
-import CustomButton from "../../components/CustomButton";
-import { NavLink } from "react-router-dom";
-import { api } from "../../api";
-import { BASE_URL } from "../../utils/constants";
+import CustomButton from "../../../components/CustomButton";
+import { api } from "../../../api";
+import { BASE_URL } from "../../../utils/constants";
+import { Link } from "react-router-dom";
 
-function Electronics() {
+function Cosmetics() {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState("");
 
   const apiCalling = async () => {
-    let data = "Electronics";
-    await api.category
-      .get(data)
-      .then((e) => {
-        console.log(e);
-        setProducts(e.data.data);
-      })
-      .catch((error) => console.log(error));
+    try {
+      let data = "Cosmetics";
+      const response = await api.category.get(data);
+      console.log(response);
+      setProducts(response.data.data);
+    } catch (error) {
+      setError(error.message.message);
+    }
   };
 
   useEffect(() => {
@@ -74,8 +74,8 @@ function Electronics() {
                   </Typography>
                   <CustomButton
                     sx={{ marginTop: "auto", alignSelf: "bottom" }}
-                    component={NavLink}
-                    to={`/products/productDetails/${product.id}`}
+                    component={Link}
+                    to={`/products/${product._id}`}
                   >
                     Shop Now
                   </CustomButton>
@@ -88,4 +88,4 @@ function Electronics() {
     </Container>
   );
 }
-export default Electronics;
+export default Cosmetics;
